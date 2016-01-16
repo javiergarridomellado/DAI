@@ -1,1 +1,1 @@
-web: gunicorn apuestas.wsgi --log-file -
+web: gunicorn ProyectoDAI.wsgi --log-file -
