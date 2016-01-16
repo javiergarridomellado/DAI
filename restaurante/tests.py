@@ -2,8 +2,7 @@ from django.test import TestCase
 
 # Create your tests here.
 
-from rest_framework import status
-from rest_framework.test import APITestCase
+
 from restaurante.views import *
 from restaurante.models import Bar
 from django.test.client import RequestFactory
