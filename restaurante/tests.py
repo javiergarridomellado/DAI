@@ -14,7 +14,7 @@ class BarMethodTests(TestCase):
 
 	def test_nombre_bar(self):
 		bar = Bar(nombre='BarPaco' ,direccion='Recogidas', numerovisitas='500')
-		per.save()
+		bar.save()
 		self.assertEqual(bar.nombre,'BarPaco')
 		self.assertEqual(bar.direccion,'Recogidas')
 		self.assertEqual(bar.numerovisitas,'500')
