@@ -21,10 +21,10 @@ RUN sudo pip install --upgrade pip
 
 #Instalación de dependencias de la aplicacion
 
-RUN cd IV_javiergarridomellado/ && sudo pip install -r requirements.txt
+RUN cd DAI/ && sudo pip install -r requirements.txt
 
 #Sincronización de la base de datos
-RUN cd IV_javiergarridomellado/ && python manage.py syncdb --noinput
+RUN cd DAI/ && python manage.py syncdb --noinput
 
 
 
