@@ -11,8 +11,8 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-import os,django
-
+import os
+import dj_database_url
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -23,15 +23,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 SECRET_KEY = '26*swq94+rg+-2tc2es6j&d#&(g4@@xe7vh1hu1)6*z^v@pd2q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-#TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = ['*']
-TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates')
+
 
 #Restricting Access with a Decorator
-#LOGIN_URL = '/restaurante/login/'
+LOGIN_URL = '/restaurante/login/'
 
 # Application definition
 
@@ -47,7 +47,7 @@ INSTALLED_APPS = (
 	'bootstrap_toolkit',
 )
 
-#import django
+import django
 
 if django.VERSION < (1, 7):
     INSTALLED_APPS += (
@@ -73,7 +73,7 @@ WSGI_APPLICATION = 'ProyectoDAI.wsgi.application'
 
 
 #TEMPLATE_DIRS = ('ProyectoDAI/restaurante/',)
-#TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates')
+TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates')
 
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
