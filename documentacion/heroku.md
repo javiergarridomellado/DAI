@@ -93,4 +93,7 @@ application = Cling(get_wsgi_application())
 
 La aplicacion [desplegada](https://apuestas.herokuapp.com/)
 
-
+Si hay algun problema en algun push de heroku hacer:
+```
+heroku create --stack cedar
+```
