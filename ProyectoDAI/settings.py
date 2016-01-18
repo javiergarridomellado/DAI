@@ -13,7 +13,14 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 import dj_database_url
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+#BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+#BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+
+
+STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -90,15 +97,18 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
 }
-ON_HEROKU = os.environ.get('PORT')
-if ON_HEROKU:
-	DATABASE_URL='postgres://kytzveedsclzaf:eIJAAuElYvSxPK-vmSdXG9Hjv8@ec2-107-21-219-235.compute-1.amazonaws.com:5432/df9sfr7a9b8vjf'
-	DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
+#ON_HEROKU = os.environ.get('PORT')
+#if ON_HEROKU:
+#	DATABASE_URL='postgres://kytzveedsclzaf:eIJAAuElYvSxPK-vmSdXG9Hjv8@ec2-107-21-219-235.compute-1.amazonaws.com:5432/df9sfr7a9b8vjf'
+#	DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
 
 
 
 STATIC_ROOT = 'staticfiles'
-
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
@@ -117,13 +127,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 #STATIC_URL = '/static/'
-STATIC_PATH = os.path.join(BASE_DIR,'static')
+#STATIC_PATH = os.path.join(BASE_DIR,'static')
 
-STATIC_URL = '/static/' # You may find this is already defined as such.
+#STATIC_URL = '/static/' # You may find this is already defined as such.
 
-STATICFILES_DIRS = (
-    STATIC_PATH,
-)
+#STATICFILES_DIRS = (
+#    STATIC_PATH,
+#)
 
 
 
