@@ -13,14 +13,7 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 import dj_database_url
-#BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-#BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-
-
-STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
-
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
 # Quick-start development settings - unsuitable for production
@@ -30,7 +23,7 @@ STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 SECRET_KEY = '26*swq94+rg+-2tc2es6j&d#&(g4@@xe7vh1hu1)6*z^v@pd2q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 TEMPLATE_DEBUG = True
 
@@ -51,7 +44,6 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 	'restaurante',
 	'easy_maps',
-	'bootstrap_toolkit',
 )
 
 import django
@@ -81,27 +73,13 @@ WSGI_APPLICATION = 'ProyectoDAI.wsgi.application'
 
 #TEMPLATE_DIRS = ('ProyectoDAI/restaurante/',)
 TEMPLATE_PATH = os.path.join(BASE_DIR, 'templates')
-TEMPLATES = [
-    {
-        'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [TEMPLATE_PATH],
-        'APP_DIRS': True,
-        'OPTIONS': {
-            'context_processors': [
-                'django.template.context_processors.debug',
-                'django.template.context_processors.request',
-                'django.contrib.auth.context_processors.auth',
-                'django.contrib.messages.context_processors.messages',
-            ],
-        },
-    },
-]
-#TEMPLATE_DIRS = (
+
+TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-#    TEMPLATE_PATH,
-#)
+    TEMPLATE_PATH,
+)
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
 
@@ -119,10 +97,7 @@ DATABASES = {
 
 
 STATIC_ROOT = 'staticfiles'
-STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
 
@@ -141,13 +116,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 #STATIC_URL = '/static/'
-#STATIC_PATH = os.path.join(BASE_DIR,'static')
+STATIC_PATH = os.path.join(BASE_DIR,'static')
 
-#STATIC_URL = '/static/' # You may find this is already defined as such.
+STATIC_URL = '/static/' # You may find this is already defined as such.
 
-#STATICFILES_DIRS = (
-#    STATIC_PATH,
-#)
+STATICFILES_DIRS = (
+    STATIC_PATH,
+)
 
 
 
