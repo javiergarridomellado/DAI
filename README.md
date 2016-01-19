@@ -36,7 +36,7 @@ Resumen:
 
 Python permite como herramienta de construcción el uso del archivo *manage.py* , es el que he usado en mi caso, puede verse en [travis](https://travis-ci.org) y [snap-ci](https://snap-ci.com/) como lo uso para la construcción y el posterior testeo.
 
-Además se añaden los archivos [create_and_run](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIV/create_and_run.sh),[docker_install_and_run](https://github.com/javiergarridomellado/DAI/blob/master/scripts/docker_install_and_run.sh), [heroku_deploy](https://github.com/javiergarridomellado/DAI/blob/master/scripts/heroku_deploy.sh) y [run_app](https://github.com/javiergarridomellado/DAI/blob/master/scripts/run_app.sh) para el despligue automático en una máquina virtual de Azure, la construcción de un entorno seguro (contenedor Docker), su posterior despliegue automático en el PAAS de Heroku y el arranque de la aplicación en local respectivamente.
+Además se añaden los archivos [create_and_run](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIV/create_and_run.sh), [docker_install_and_run](https://github.com/javiergarridomellado/DAI/blob/master/scripts/docker_install_and_run.sh), [heroku_deploy](https://github.com/javiergarridomellado/DAI/blob/master/scripts/heroku_deploy.sh) y [run_app](https://github.com/javiergarridomellado/DAI/blob/master/scripts/run_app.sh) para el despligue automático en una máquina virtual de Azure, la construcción de un entorno seguro (contenedor Docker), su posterior despliegue automático en el PAAS de Heroku y el arranque de la aplicación en local respectivamente.
 
 ## Instalación local de la aplicación
 
@@ -55,7 +55,7 @@ Para las pruebas he usado el sistema de testeo de Django. Basta con ejecutar el 
 
 **python manage.py test** ó **python manage.py test nombreaplicacion**
 
-Puede verse los correspondientes [tests](https://github.com/javiergarridomellado/DAI/blob/master/apu/tests.py) que se realizan.Se usan tanto para **travis** como para **snap-ci**.
+Puede verse los correspondientes [tests](https://github.com/javiergarridomellado/DAI/blob/master/restaurante/tests.py) que se realizan.Se usan tanto para **travis** como para **snap-ci**.
 
 ![tests](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/travis_zpstciokpes.png)
 
