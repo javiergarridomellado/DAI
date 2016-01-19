@@ -2,11 +2,12 @@
 Autor: Francisco Javier Garrido Mellado
 
 [![Build Status](https://travis-ci.org/javiergarridomellado/DAI.svg?branch=master)](https://travis-ci.org/javiergarridomellado/DAI)
-[![Build Status](https://travis-ci.org/javiergarridomellado/IV_javiergarridomellado.svg?branch=master)](https://travis-ci.org/javiergarridomellado/IV_javiergarridomellado)
 
-[![Build Status](https://snap-ci.com/javiergarridomellado/IV_javiergarridomellado/branch/master/build_image)](https://snap-ci.com/javiergarridomellado/IV_javiergarridomellado/branch/master)
+[![Build Status](https://snap-ci.com/javiergarridomellado/DAI/branch/master/build_image)](https://snap-ci.com/javiergarridomellado/DAI/branch/master)
 
-[![Heroku](https://www.herokucdn.com/deploy/button.png)](https://apuestas.herokuapp.com/)
+[![Heroku](https://www.herokucdn.com/deploy/button.png)](https://restaurantejaviergarrido.herokuapp.com/restaurante/)
+
+[![Azure](https://camo.githubusercontent.com/0a0a0d99a96e23a0af8b612b45cf0e204080ad6c/68747470733a2f2f7777772e64726f70626f782e636f6d2f732f6f717572366b3730706f797363786a2f617a7572652e706e673f646c3d31)](http://restaurantejaviergarrido.cloudapp.net/restaurante/)
 
 
 ## Introducción Proyecto Apuestas
