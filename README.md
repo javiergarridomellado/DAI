@@ -167,7 +167,7 @@ La url donde puede verse la aplicación la proporciona Azure al crear la máquin
 ./create_and_run.sh
 ```
 
-**Nota: Para ejecutar el script es necesario tener en el mismo nivel los archivos [Vagrantfile](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIV/Vagrantfile), [ansible_hosts](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIV/ansible_hosts) e [iv.yml](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIV/iv.yml) que se encuentran en el siguiente [directorio](https://github.com/javiergarridomellado/DAI/tree/master/VagrantAzure)**
+**Nota: Para ejecutar el script es necesario tener en el mismo nivel los archivos [Vagrantfile](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIV/Vagrantfile), [ansible_hosts](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIV/ansible_hosts) e [iv.yml](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIV/iv.yml) que se encuentran en el siguiente [directorio](https://github.com/javiergarridomellado/DAI/tree/master/VagrantIV)**
 
 [Más información](https://github.com/javiergarridomellado/DAI/blob/master/documentacion/despliegueAzure.md)
 
@@ -181,7 +181,7 @@ Debido a que no todo el mundo dispone de cuenta en Azure facilito la opción del
 ./create_and_run.sh
 ```
 
-**Nota: Para ejecutar el script es necesario tener en el mismo nivel los archivos [Vagrantfile](https://github.com/javiergarridomellado/DAI/blob/master/VagrantLocal/Vagrantfile), [ansible_hosts](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIVLocal/ansible_hosts) e [iv.yml](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIVLocal/iv.yml) que se encuentran en el siguiente [directorio](https://github.com/javiergarridomellado/DAI/tree/master/VagrantIVLocal)**
+**Nota: Para ejecutar el script es necesario tener en el mismo nivel los archivos [Vagrantfile](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIVLocal/Vagrantfile), [ansible_hosts](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIVLocal/ansible_hosts) e [iv.yml](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIVLocal/iv.yml) que se encuentran en el siguiente [directorio](https://github.com/javiergarridomellado/DAI/tree/master/VagrantIVLocal)**
 
 [Más información](https://github.com/javiergarridomellado/DAI/blob/master/documentacion/despliegueVB.md)
 
