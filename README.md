@@ -130,7 +130,7 @@ Los pasos a seguir son los siguientes:
 - Ejecutar el archivo mediante la orden `./docker_install_and_run.sh`
 
 Con esto nos encontramos dentro de la imagen descargada, la cual tiene la aplicación dentro. Hecho esto, hay que teclear `cd DAI/scripts` y se nos abre un abanico de dos posibilidades:
-gi
+
 ![dockerrun](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/dokerrun_zpsatftkyxx.png)
 
 ### Ejecución 
@@ -160,14 +160,14 @@ De esta manera se despliega la aplicación en el PaaS Heroku (obviamente es inte
 
 ## Despliegue en un Iaas: Azure
 
-He usado Azure como IaaS. La aplicación se despliega automáticamente ejecutando el script [create_and_run](https://github.com/javiergarridomellado/DAI/blob/master/VagrantAzure/create_and_run.sh) gracias a Vagrant y Ansible. Se recomienda antes definir la variable de entorno ejecutando `export ANSIBLE_HOSTS=~/ruta/ansible_hosts`.
+He usado Azure como IaaS. La aplicación se despliega automáticamente ejecutando el script [create_and_run](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIV/create_and_run.sh) gracias a Vagrant y Ansible. Se recomienda antes, definir la variable de entorno ejecutando `export ANSIBLE_HOSTS=~/ruta/ansible_hosts`.
 La url donde puede verse la aplicación la proporciona Azure al crear la máquina en la nube y es la siguiente [http://restaurantejaviergarrido.cloudapp.net/restaurante/](http://restaurantejaviergarrido.cloudapp.net/restaurante/)( Ahora se encuentra apagada).
 
 ```
 ./create_and_run.sh
 ```
 
-**Nota: Para ejecutar el script es necesario tener en el mismo nivel los archivos [Vagrantfile](https://github.com/javiergarridomellado/DAI/blob/master/VagrantAzure/Vagrantfile), [ansible_hosts](https://github.com/javiergarridomellado/DAI/blob/master/VagrantAzure/ansible_hosts) e [iv.yml](https://github.com/javiergarridomellado/DAI/blob/master/VagrantAzure/iv.yml) que se encuentran en el siguiente [directorio](https://github.com/javiergarridomellado/DAI/tree/master/VagrantAzure)**
+**Nota: Para ejecutar el script es necesario tener en el mismo nivel los archivos [Vagrantfile](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIV/Vagrantfile), [ansible_hosts](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIV/ansible_hosts) e [iv.yml](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIV/iv.yml) que se encuentran en el siguiente [directorio](https://github.com/javiergarridomellado/DAI/tree/master/VagrantAzure)**
 
 [Más información](https://github.com/javiergarridomellado/DAI/blob/master/documentacion/despliegueAzure.md)
 
@@ -175,13 +175,13 @@ La url donde puede verse la aplicación la proporciona Azure al crear la máquin
 
 ### Despliegue en VirtualBox
 
-Debido a que no todo el mundo dispone de cuenta en Azure facilito la opción del despliegue en local gracias a VirtualBox, para ello al igual que antes se define la variable de entorno `export ANSIBLE_HOSTS=~/ruta/ansible_hosts` y ya solo basta con ejecutar el scrip [create_and_run](https://github.com/javiergarridomellado/DAI/blob/master/VagrantLocal/create_and_run.sh).
+Debido a que no todo el mundo dispone de cuenta en Azure facilito la opción del despliegue en local gracias a VirtualBox, para ello al igual que antes se define la variable de entorno `export ANSIBLE_HOSTS=~/ruta/ansible_hosts` y ya solo basta con ejecutar el scrip [create_and_run](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIVLocal/create_and_run.sh).
 
 ```
 ./create_and_run.sh
 ```
 
-**Nota: Para ejecutar el script es necesario tener en el mismo nivel los archivos [Vagrantfile](https://github.com/javiergarridomellado/DAI/blob/master/VagrantLocal/Vagrantfile), [ansible_hosts](https://github.com/javiergarridomellado/DAI/blob/master/VagrantLocal/ansible_hosts) e [iv.yml](https://github.com/javiergarridomellado/DAI/blob/master/VagrantLocal/iv.yml) que se encuentran en el siguiente [directorio](https://github.com/javiergarridomellado/DAI/tree/master/VagrantLocal)**
+**Nota: Para ejecutar el script es necesario tener en el mismo nivel los archivos [Vagrantfile](https://github.com/javiergarridomellado/DAI/blob/master/VagrantLocal/Vagrantfile), [ansible_hosts](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIVLocal/ansible_hosts) e [iv.yml](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIVLocal/iv.yml) que se encuentran en el siguiente [directorio](https://github.com/javiergarridomellado/DAI/tree/master/VagrantIVLocal)**
 
 [Más información](https://github.com/javiergarridomellado/DAI/blob/master/documentacion/despliegueVB.md)
 
