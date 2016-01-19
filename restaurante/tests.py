@@ -12,13 +12,13 @@ from django.test.client import RequestFactory
 
 class BarMethodTests(TestCase):
 
-	def test_nombre_bar(self):
-		bar = Bar(nombre='BarPaco' ,direccion='Recogidas', numerovisitas='500')
-		bar.save()
-		self.assertEqual(bar.nombre,'BarPaco')
-		self.assertEqual(bar.direccion,'Recogidas')
-		self.assertEqual(bar.numerovisitas,'500')
-		print("Testeo correcto.")
+	#def test_nombre_bar(self):
+		#bar = Bar(nombre='BarPaco' ,direccion='Recogidas', numerovisitas='500')
+		#bar.save()
+		#self.assertEqual(bar.nombre,'BarPaco')
+		#self.assertEqual(bar.direccion,'Recogidas')
+		#self.assertEqual(bar.numerovisitas,'500')
+		#print("Testeo correcto.")
 
 	def setUp(self):
 		Bar.objects.create(nombre="BarVietto", direccion="Granada",numerovisitas='500')
