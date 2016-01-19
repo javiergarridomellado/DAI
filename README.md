@@ -102,6 +102,10 @@ Sino se desea usar el script puede descargarse la imagen directamente ejecutando
  ```
 sudo docker run -t -i javiergarridomellado/dai:dai /bin/bash
 ```
+Para mayor comodidad hacer un reenvio de puertos de la siguiente manera:
+```
+docker run -t -i -p 8000:8000 javiergarridomellado/dai:dai /bin/bash
+```
 
 [Más información](https://github.com/javiergarridomellado/DAI/blob/master/documentacion/docker.md)
 
