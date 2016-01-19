@@ -30,3 +30,23 @@ class BarMethodTests(TestCase):
 		self.assertEqual(bVietto.direccion,'Granada')
 		self.assertEqual(bPaco.direccion,'Albolote')
 		print("Testeo de Bar correcto.")
+
+class TapaMethodTests(TestCase):
+
+
+	def setUp(self):
+		bPaco = Bar(nombre='BarPaco' ,direccion='Granada', numerovisitas='500')
+		bPaco.save()
+		bVietto = Bar(nombre='BarVietto' ,direccion='Albolote', numerovisitas='500')
+		bVietto.save()
+		Tapa.objects.create(nombre="Hamburguesa", bar=bPaco, votos='35')
+		Tapa.objects.create(nombre="Pipas", bar=bVietto, votos='25')
+
+	def test_tapa_bar(self):
+		Hamb = Tapa.objects.get(nombre="Hamburguesa", votos='35')
+		Pip = Tapa.objects.get(nombre="Pipas", votos='25')
+		bVietto = Bar.objects.get(nombre="BarVietto")
+		bPaco = Bar.objects.get(nombre="BarPaco")
+		self.assertEqual(Hamb.bar,bPaco)
+		self.assertEqual(Pip.bar,bVietto)
+		print("Testeo de pertenencia correcto.")
