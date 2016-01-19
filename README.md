@@ -109,6 +109,7 @@ docker run -t -i -p 8000:8000 javiergarridomellado/dai:dai /bin/bash
 
 [Más información](https://github.com/javiergarridomellado/DAI/blob/master/documentacion/docker.md)
 
+![reenv](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/reenv_zpsrts3yndc.png)
 
 ## Automatización o Modo de Uso ( Online )
 
