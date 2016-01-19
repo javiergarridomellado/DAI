@@ -34,7 +34,7 @@ Resumen:
 
 ##Herramienta de Construcción
 
-Python permite como herramienta de construcción el uso del archivo *manage.py* , es el que he usado en mi caso, puede verse en travis y snap-ci como lo uso para la construcción y el posterior testeo.
+Python permite como herramienta de construcción el uso del archivo *manage.py* , es el que he usado en mi caso, puede verse en [travis](https://travis-ci.org) y [snap-ci](https://snap-ci.com/) como lo uso para la construcción y el posterior testeo.
 
 Además se añaden los archivos [create_and_run](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIV/create_and_run.sh),[docker_install_and_run](https://github.com/javiergarridomellado/DAI/blob/master/scripts/docker_install_and_run.sh), [heroku_deploy](https://github.com/javiergarridomellado/DAI/blob/master/scripts/heroku_deploy.sh) y [run_app](https://github.com/javiergarridomellado/DAI/blob/master/scripts/run_app.sh) para el despligue automático en una máquina virtual de Azure, la construcción de un entorno seguro (contenedor Docker), su posterior despliegue automático en el PAAS de Heroku y el arranque de la aplicación en local respectivamente.
 
