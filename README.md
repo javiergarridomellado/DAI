@@ -10,17 +10,17 @@ Autor: Francisco Javier Garrido Mellado
 [![Azure](https://camo.githubusercontent.com/0a0a0d99a96e23a0af8b612b45cf0e204080ad6c/68747470733a2f2f7777772e64726f70626f782e636f6d2f732f6f717572366b3730706f797363786a2f617a7572652e706e673f646c3d31)](http://restaurantejaviergarrido.cloudapp.net/restaurante/)
 
 
-## Introducción Proyecto Apuestas
+## Introducción Proyecto Restaurante 
 
-Se trata de  una aplicación de apuestas de fútbol donde los usuarios registran unos datos básicos y disponen de un fondo para apostar, debates, novedades sobre fútbol, etc. 
+Se trata de  una aplicación de Bares(tambien restaurantes) y Tapas donde los usuarios se registran e introducen su bar con sus correspondientes tapas, además se les permite votar ( solo es necesario estar registrados ) las tapas que más le ha gustado. La página muestra una gráfica de los Bares más exitosos así como un mapa de Google para que el usuario pueda visitarlo fisicamente.
 
-Este proyecto será llevado a lo largo del año conjuntamente con la asignatura de Diseño de Aplicaciones para Internet.
+Este proyecto se ha llevado a cabo conjuntamente con la asignatura de Diseño de Aplicaciones para Internet.
 
 [Inscrito en el certamen de Software Libre](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/Pantallazo-Gracias%20-%20Chromium_zpsjdau6lfd.png)
 
 ## Seguridad
 
-Respecto a la seguridad se implementará de manera que los datos y credenciales de los usuarios queden salvaguardados de cualquier ataque, para ello será necesario que estos esten separados.
+Respecto a la seguridad se garantiza que los datos y credenciales de los usuarios quedan salvaguardados de cualquier ataque, para ello se ha usado un sistema criptográfico basado en hashes que lo garantiza.
 
 ## Infraestructura
 
