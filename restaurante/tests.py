@@ -29,4 +29,4 @@ class BarMethodTests(TestCase):
 		bPaco = Bar.objects.get(nombre="BarPaco")
 		self.assertEqual(bVietto.direccion,'Granada')
 		self.assertEqual(bPaco.direccion,'Albolote')
-		print("Testeo correcto.")
+		print("Testeo de Bar correcto.")
