@@ -4,6 +4,8 @@
   vars:
     mysql_root_password: 
   tasks:
+  - name: Actualizar sistema 
+    apt: update_cache=yes upgrade=dist 
   - name: Install MySQL
     apt: name={{ item }} update_cache=yes cache_valid_time=3600 state=present
     sudo: yes
@@ -46,7 +48,7 @@
     command: sudo pip install --upgrade pip
     command: sudo apt-get install -y python-dev libpq-dev python-psycopg2
   - name: Obtener aplicacion git
-    git: repo=https://github.com/javiergarridomellado/proyectodai.git  dest=DAI clone=yes force=yes
+    git: repo=https://github.com/javiergarridomellado/DAI.git  dest=DAI clone=yes force=yes
   - name: Permisos de ejecucion
     command: chmod -R +x DAI
   - name: Instalar requisitos
