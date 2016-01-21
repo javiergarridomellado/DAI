@@ -55,6 +55,10 @@
     command: sudo pip install -r DAI/requirements.txt
   - name: crear bd
     command: mysqladmin  -h localhost -u root  create vagrant
+  - name: mover
+    command: sudo mv DAI/ProyectoDAI/settings.py DAI/ProyectoDAI/bak_settings.py
+  - name: mover2
+    command: sudo mv DAI/ProyectoDAI/bak2_settings.py DAI/ProyectoDAI/settings.py
   - name: sincro
     command: sudo python DAI/manage.py syncdb --noinput
   - name: populate
