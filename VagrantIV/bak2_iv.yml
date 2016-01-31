@@ -1,49 +1,17 @@
 - hosts: localhost
   sudo: yes
   remote_user: vagrant
-  vars:
-    mysql_root_password: 
   tasks:
   - name: Actualizar sistema 
-    apt: update_cache=yes upgrade=dist 
-  - name: Install MySQL
-    apt: name={{ item }} update_cache=yes cache_valid_time=3600 state=present
-    sudo: yes
-    with_items:
-    - python-mysqldb
-    - mysql-server
-  #- name: copy cnf
-  #  copy: src=.my.cnf dest=~/.my.cnf owner=ubuntu mode=0644
-  #  sudo: yes
-  - name: Start the MySQL service
-    sudo: yes
-    service: 
-      name: mysql 
-      state: started
-      enabled: true
-  - name: update mysql root password for all root accounts
-    sudo: yes
-    mysql_user: 
-      name: root 
-      host: "{{ item }}" 
-      password: "{{ mysql_root_password }}"
-      login_user: root
-      login_password: "{{ mysql_root_password }}"
-      check_implicit_admin: yes
-      priv: "*.*:ALL,GRANT"
-    with_items:
-      - "{{ ansible_hostname }}"
-      - 127.0.0.1
-      - ::1
-      - localhost 
-  - name: Instalar paquetes 
+    apt: update_cache=yes upgrade=dist  
+  - name: Instalar paquetes
     apt: name=python-setuptools state=present
     apt: name=build-essential state=present
     apt: name=python-pip state=present
     apt: name=git state=present
   - name: Ins Pyp
     action: apt pkg=python-pip
-  - name: Conector Postgre
+  - name: Postgre
     command: sudo easy_install pip
     command: sudo pip install --upgrade pip
     command: sudo apt-get install -y python-dev libpq-dev python-psycopg2
@@ -53,12 +21,7 @@
     command: chmod -R +x DAI
   - name: Instalar requisitos
     command: sudo pip install -r DAI/requirements.txt
-  - name: crear bd
-    command: mysqladmin  -h localhost -u root  create vagrant
-  - name: sincro
-    command: sudo python DAI/manage.py syncdb --noinput
-  - name: populate
-    command: sudo python DAI/populate_restaurante.py
   - name: ejecutar
     command: nohup sudo python DAI/manage.py runserver 0.0.0.0:80
+
 
