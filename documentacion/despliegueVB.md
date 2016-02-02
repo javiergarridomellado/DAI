@@ -151,6 +151,7 @@ vagrant box add ubuntu https://cloud-images.ubuntu.com/vagrant/trusty/current/tr
 vagrant up
 ```
 En él se le indica que debe descargar la "box" de Ubuntu y después realizar un "vagrant up". Ejecutado esto vemos como se crea la máquina y se provisiona. 
+
 ![ansible](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/vagrantlocal_zps95e6qrly.png)
 
 Para visitar la aplicación desplegada solo es necesario usar la url *localhost:8080*:
