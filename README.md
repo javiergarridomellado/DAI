@@ -163,7 +163,7 @@ De esta manera se despliega la aplicación en el PaaS Heroku (obviamente es inte
 ## Despliegue en un Iaas: Azure
 
 He usado Azure como IaaS. La aplicación se despliega automáticamente y queda en modo producción ejecutando el script [create_and_run](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIV/create_and_run.sh) gracias a Vagrant y Ansible. Se recomienda definir la variable de entorno ejecutando `export ANSIBLE_HOSTS=~/ruta/ansible_hosts`.
-La url donde puede verse la aplicación la proporciona Azure al crear la máquina en la nube y es la siguiente [http://restaurantejaviergarrido.cloudapp.net/restaurante/](http://restaurantejaviergarrido.cloudapp.net/restaurante/).
+La url donde puede verse la aplicación es la siguiente [http://restaurantejaviergarrido.cloudapp.net/restaurante/](http://restaurantejaviergarrido.cloudapp.net/restaurante/).
 
 ```
 ./create_and_run.sh
