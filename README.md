@@ -141,7 +141,7 @@ De esta manera se ejecuta la aplicación de manera local(obviamente aislado del 
 - Ejecutar la orden `ifconfig` para conocer la IP que hay que poner en el navegador.
 - Dar permisos de ejecución mediante la orden **chmod** al archivo [run_app.sh](https://github.com/javiergarridomellado/DAI/blob/master/scripts/run_app.sh), por ejemplo `chmod 777 run_app.sh`
 - Ejecutar el archivo mediante la orden `./run_app.sh`
-- Ingresar en el navegador anfitrión `ip_del_contenedor:8000` , con ello tendremos la aplicación lanzada.
+- Ingresar en el navegador anfitrión `ip_del_contenedor:8000` , con ello tendremos la aplicación lanzada( existe la opción de reenvio de puertos para Docker como he comentado antes).
 
 ![ifconfig](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/ifconfig_zpsvfisjtvf.png)
 
@@ -149,7 +149,7 @@ De esta manera se ejecuta la aplicación de manera local(obviamente aislado del 
 
 ![nav](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/dockerappdesplegadalocal_zpsrkuj1kx3.png)
 
-### Despliegue en Paas
+#### Despliegue en Paas
 
 De esta manera se despliega la aplicación en el PaaS Heroku (obviamente es interesante realizar el paso anterior y probar la aplicación en dicho entorno aislado antes de desplegarlo) y se utiliza la base de datos PostgreSQL que nos proporciona Heroku:
 - Dar permisos de ejecución mediante la orden **chmod** al archivo [heroku_deploy.sh](https://github.com/javiergarridomellado/DAI/blob/master/scripts/heroku_deploy.sh), por ejemplo `chmod 777 heroku_deploy.sh`
@@ -162,12 +162,19 @@ De esta manera se despliega la aplicación en el PaaS Heroku (obviamente es inte
 
 ## Despliegue en un Iaas: Azure
 
-He usado Azure como IaaS. La aplicación se despliega automáticamente ejecutando el script [create_and_run](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIV/create_and_run.sh) gracias a Vagrant y Ansible. Se recomienda antes, definir la variable de entorno ejecutando `export ANSIBLE_HOSTS=~/ruta/ansible_hosts`.
+He usado Azure como IaaS. La aplicación se despliega automáticamente y queda en modo producción ejecutando el script [create_and_run](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIV/create_and_run.sh) gracias a Vagrant y Ansible. Se recomienda definir la variable de entorno ejecutando `export ANSIBLE_HOSTS=~/ruta/ansible_hosts`.
 La url donde puede verse la aplicación la proporciona Azure al crear la máquina en la nube y es la siguiente [http://restaurantejaviergarrido.cloudapp.net/restaurante/](http://restaurantejaviergarrido.cloudapp.net/restaurante/)( Ahora se encuentra apagada).
 
 ```
 ./create_and_run.sh
 ```
+Los servicios utilizados en modo producción son los siguientes:
+
+- [Azure](https://azure.microsoft.com/en-us/?b=16.01) como IaaS ( servicio en la nube).
+- [MySQL](https://www.mysql.com/) como servidor de base de datos.
+- [Nginx](http://nginx.org/) como servidor web( responde las peticiones estáticas como principal función del servidor ).
+- [Gunicorn](http://gunicorn.org/) como servidor web( es el servidor de la aplicación y responde a las peticiones dinámicas ).
+- [Supervisor](http://supervisord.org/) como **watchdog**( monitoriza y mantiene en continuo funcionamiento el servidor Gunicorn )
 
 **Nota: Para ejecutar el script es necesario tener en el mismo nivel los archivos [Vagrantfile](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIV/Vagrantfile), [ansible_hosts](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIV/ansible_hosts) e [iv.yml](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIV/iv.yml) que se encuentran en el siguiente [directorio](https://github.com/javiergarridomellado/DAI/tree/master/VagrantIV)**
 
@@ -182,6 +189,13 @@ Debido a que no todo el mundo dispone de cuenta en Azure facilito la opción del
 ```
 ./create_and_run.sh
 ```
+Los servicios utilizados en modo producción son los siguientes:
+
+- [VirtualBox](https://www.virtualbox.org/) como software de virtualización local.
+- [MySQL](https://www.mysql.com/) como servidor de base de datos.
+- [Nginx](http://nginx.org/) como servidor web( responde las peticiones estáticas como principal función del servidor ).
+- [Gunicorn](http://gunicorn.org/) como servidor web( es el servidor de la aplicación y responde a las peticiones dinámicas ).
+- [Supervisor](http://supervisord.org/) como **watchdog**( monitoriza y mantiene en continuo funcionamiento el servidor Gunicorn )
 
 **Nota: Para ejecutar el script es necesario tener en el mismo nivel los archivos [Vagrantfile](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIVLocal/Vagrantfile), [ansible_hosts](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIVLocal/ansible_hosts) e [iv.yml](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIVLocal/iv.yml) que se encuentran en el siguiente [directorio](https://github.com/javiergarridomellado/DAI/tree/master/VagrantIVLocal)**
 
@@ -239,5 +253,20 @@ $ ./heroku_deploy.sh
 $ ./docker_install_and_run.sh
 ```
 
+## Referencias
 
-ll
+- [Documentación oficial de Azure](https://azure.microsoft.com/es-es/documentation/)
+- [Documentación oficial de Ansible](http://docs.ansible.com/)
+- [Documentación oficial de Vagrant](https://www.vagrantup.com/docs/)
+- [Documentación oficial de MySQL](https://dev.mysql.com/doc/)
+- [Documentación oficial de Nginx](http://nginx.org/en/docs/)
+- [Documentación oficial de Gunicorn](http://docs.gunicorn.org/en/stable/run.html)
+- [Documentación oficial de Supervisor](http://supervisord.org/index.html)
+- [Documentación oficial de Docker](https://docs.docker.com/)
+- [Documentación oficial de Fabfile](http://docs.fabfile.org/en/1.10/)
+- [Documentación oficial de Heroku](https://devcenter.heroku.com/categories/reference)
+- [Documentación oficial de Snap-ci](https://docs.snap-ci.com/getting-started/)
+- [Documentación oficial de Travis](https://docs.travis-ci.com/)
+- [Documentación oficial de Django](https://docs.djangoproject.com/en/1.9/)
+
+
