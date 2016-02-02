@@ -14,7 +14,7 @@ Autor: Francisco Javier Garrido Mellado
 
 ## Introducción Proyecto Restaurante 
 
-Se trata de  una aplicación de Bares(tambien restaurantes) y Tapas donde los usuarios se registran e introducen su bar con sus correspondientes tapas, además se les permite votar ( solo es necesario estar registrados ) las tapas que más le ha gustado. La página muestra una gráfica de los Bares más exitosos así como un mapa de Google para que el usuario pueda visitarlo fisicamente.
+Se trata de  una aplicación de Bares (tambien restaurantes) y Tapas donde los usuarios se registran e introducen su bar con sus correspondientes tapas, además se les permite votar (solo es necesario estar registrados) las tapas que más le ha gustado. La página muestra una gráfica de los Bares más exitosos así como un mapa de Google para que el usuario pueda visitarlo fisicamente.
 
 Este proyecto se ha llevado a cabo conjuntamente con la asignatura de Diseño de Aplicaciones para Internet.
 
@@ -22,7 +22,7 @@ Este proyecto se ha llevado a cabo conjuntamente con la asignatura de Diseño de
 
 ## Seguridad
 
-Respecto a la seguridad se garantiza que los datos y credenciales de los usuarios quedan salvaguardados de cualquier ataque, para ello se ha usado un sistema criptográfico basado en hashes(**SHA 256**) que garantiza la autenticidad e integridad.
+Respecto a la seguridad se garantiza que los datos y credenciales de los usuarios quedan salvaguardados de cualquier ataque, para ello se ha usado un sistema criptográfico basado en hashes (**SHA 256**) que garantiza la autenticidad e integridad.
 
 ## Infraestructura
 
@@ -38,7 +38,7 @@ Resumen:
 
 Python permite como herramienta de construcción el uso del archivo *manage.py* , es el que he usado en mi caso, puede verse en [travis](https://travis-ci.org) y [snap-ci](https://snap-ci.com/) como lo uso para la construcción y el posterior testeo.
 
-Además se añaden los archivos [create_and_run](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIV/create_and_run.sh), [docker_install_and_run](https://github.com/javiergarridomellado/DAI/blob/master/scripts/docker_install_and_run.sh), [heroku_deploy](https://github.com/javiergarridomellado/DAI/blob/master/scripts/heroku_deploy.sh) y [run_app](https://github.com/javiergarridomellado/DAI/blob/master/scripts/run_app.sh) para el despligue automático en una máquina virtual de Azure( inclusive la posibilidad de despliegue en una máquina local de [VirtualBox](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIVLocal/create_and_run.sh) ), la construcción de un entorno seguro (contenedor Docker), su posterior despliegue automático en el PAAS de Heroku y el arranque de la aplicación en local respectivamente.
+Además se añaden los archivos [create_and_run](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIV/create_and_run.sh), [docker_install_and_run](https://github.com/javiergarridomellado/DAI/blob/master/scripts/docker_install_and_run.sh), [heroku_deploy](https://github.com/javiergarridomellado/DAI/blob/master/scripts/heroku_deploy.sh) y [run_app](https://github.com/javiergarridomellado/DAI/blob/master/scripts/run_app.sh) para el despligue automático en una máquina virtual de Azure (inclusive la posibilidad de despliegue en una máquina local de [VirtualBox](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIVLocal/create_and_run.sh) ), la construcción de un entorno seguro (contenedor Docker), su posterior despliegue automático en el PAAS de Heroku y el arranque de la aplicación en local respectivamente.
 
 ## Instalación local de la aplicación
 
@@ -88,7 +88,7 @@ La creación del entorno Docker en Azure usando el archivo [fabfile](https://git
 
 Como he creado la máquina virtual puede [consultarse](https://github.com/javiergarridomellado/DAI/blob/master/documentacion/azure.md).
 
-La aplicación ( del Docker ) desplegada es la siguiente [http://restaurantejaviergarrido.westeurope.cloudapp.azure.com/restaurante/](http://restaurantejaviergarrido.westeurope.cloudapp.azure.com/).
+La aplicación (del Docker) desplegada es la siguiente [http://restaurantejaviergarrido.westeurope.cloudapp.azure.com/restaurante/](http://restaurantejaviergarrido.westeurope.cloudapp.azure.com/).
 
 ## Entorno de pruebas:[Docker](https://www.docker.com/)
 
@@ -96,7 +96,7 @@ Se usa Docker como plataforma que automatiza el despliegue de la aplicación den
 
 La imagen de la aplicación es la [siguiente](https://hub.docker.com/r/javiergarridomellado/dai/)
 
-Para crear el entorno de prueba se ha provisto del archivo **docker_install_and_run.sh**(explicado en el siguiente apartado), basta con ejecutar:
+Para crear el entorno de prueba se ha provisto del archivo **docker_install_and_run.sh** (explicado en el siguiente apartado), basta con ejecutar:
 ```
 ./docker_install_and_run.sh
 ```
@@ -104,7 +104,7 @@ Sino se desea usar el script puede descargarse la imagen directamente ejecutando
  ```
 sudo docker run -t -i javiergarridomellado/dai:dai /bin/bash
 ```
-Para mayor comodidad se puede hacer un reenvio de puertos de la siguiente manera( esto evita tener que buscar la ip del docker ):
+Para mayor comodidad se puede hacer un reenvio de puertos de la siguiente manera (esto evita tener que buscar la ip del docker):
 ```
 docker run -t -i -p 8000:8000 javiergarridomellado/dai:dai /bin/bash
 ```
@@ -121,7 +121,7 @@ Notar que se ha añadido un script [heroku_deploy.sh](https://github.com/javierg
 
 
 
-### Automatización o Modo de Uso ( Local )
+### Automatización o Modo de Uso (Local)
 
 Para facilitar el uso de la aplicación se han añadido tres [scripts](https://github.com/javiergarridomellado/DAI/tree/master/scripts) de manera que cualquier persona con un conocimento básico pueda probarla en un entorno tanto aislado como online.
 
@@ -137,11 +137,11 @@ Con esto nos encontramos dentro de la imagen descargada, la cual tiene la aplica
 
 #### Ejecución 
 
-De esta manera se ejecuta la aplicación de manera local(obviamente aislado del sistema anfitrión ya que se encuentra dentro del contenedor):
+De esta manera se ejecuta la aplicación de manera local (obviamente aislado del sistema anfitrión ya que se encuentra dentro del contenedor):
 - Ejecutar la orden `ifconfig` para conocer la IP que hay que poner en el navegador.
 - Dar permisos de ejecución mediante la orden **chmod** al archivo [run_app.sh](https://github.com/javiergarridomellado/DAI/blob/master/scripts/run_app.sh), por ejemplo `chmod 777 run_app.sh`
 - Ejecutar el archivo mediante la orden `./run_app.sh`
-- Ingresar en el navegador anfitrión `ip_del_contenedor:8000` , con ello tendremos la aplicación lanzada( existe la opción de reenvio de puertos para Docker como he comentado antes).
+- Ingresar en el navegador anfitrión `ip_del_contenedor:8000` , con ello tendremos la aplicación lanzada (existe la opción de reenvio de puertos para Docker como he comentado antes).
 
 ![ifconfig](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/ifconfig_zpsvfisjtvf.png)
 
@@ -170,11 +170,11 @@ La url donde puede verse la aplicación la proporciona Azure al crear la máquin
 ```
 Los servicios utilizados en modo producción son los siguientes:
 
-- [Azure](https://azure.microsoft.com/en-us/?b=16.01) como IaaS ( servicio en la nube).
+- [Azure](https://azure.microsoft.com/en-us/?b=16.01) como IaaS (servicio en la nube).
 - [MySQL](https://www.mysql.com/) como servidor de base de datos.
-- [Nginx](http://nginx.org/) como servidor web( responde las peticiones estáticas como principal función del servidor ).
-- [Gunicorn](http://gunicorn.org/) como servidor web( es el servidor de la aplicación y responde a las peticiones dinámicas ).
-- [Supervisor](http://supervisord.org/) como **watchdog**( monitoriza y mantiene en continuo funcionamiento el servidor Gunicorn )
+- [Nginx](http://nginx.org/) como servidor web (tiene como función principal responder a las peticiones estáticas).
+- [Gunicorn](http://gunicorn.org/) como servidor web (es el servidor de la aplicación y responde a las peticiones dinámicas).
+- [Supervisor](http://supervisord.org/) como **watchdog** (monitoriza y mantiene en continuo funcionamiento el servidor Gunicorn)
 
 **Nota: Para ejecutar el script es necesario tener en el mismo nivel los archivos [Vagrantfile](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIV/Vagrantfile), [ansible_hosts](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIV/ansible_hosts) e [iv.yml](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIV/iv.yml) que se encuentran en el siguiente [directorio](https://github.com/javiergarridomellado/DAI/tree/master/VagrantIV)**
 
@@ -193,9 +193,9 @@ Los servicios utilizados en modo producción son los siguientes:
 
 - [VirtualBox](https://www.virtualbox.org/) como software de virtualización local.
 - [MySQL](https://www.mysql.com/) como servidor de base de datos.
-- [Nginx](http://nginx.org/) como servidor web( responde las peticiones estáticas como principal función del servidor ).
-- [Gunicorn](http://gunicorn.org/) como servidor web( es el servidor de la aplicación y responde a las peticiones dinámicas ).
-- [Supervisor](http://supervisord.org/) como **watchdog**( monitoriza y mantiene en continuo funcionamiento el servidor Gunicorn )
+- [Nginx](http://nginx.org/) como servidor web (tiene como función principal responder a las peticiones estáticas).
+- [Gunicorn](http://gunicorn.org/) como servidor web (es el servidor de la aplicación y responde a las peticiones dinámicas).
+- [Supervisor](http://supervisord.org/) como **watchdog** (monitoriza y mantiene en continuo funcionamiento el servidor Gunicorn)
 
 **Nota: Para ejecutar el script es necesario tener en el mismo nivel los archivos [Vagrantfile](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIVLocal/Vagrantfile), [ansible_hosts](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIVLocal/ansible_hosts) e [iv.yml](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIVLocal/iv.yml) que se encuentran en el siguiente [directorio](https://github.com/javiergarridomellado/DAI/tree/master/VagrantIVLocal)**
 
@@ -234,7 +234,7 @@ $ python manage.py migrate --noinput
 $ python manage.py test
 ```
 
-###Arrancar aplicación( 2 opciones )
+###Arrancar aplicación (2 opciones)
 ```
 $ ./run_app.sh
 ```
@@ -248,7 +248,7 @@ $ python manage.py runserver
 $ ./heroku_deploy.sh
 ```
 
-###Instalar imagen docker(Contenedor Ubuntu+Aplicación)
+###Instalar imagen docker (Contenedor Ubuntu+Aplicación)
 ```
 $ ./docker_install_and_run.sh
 ```
