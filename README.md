@@ -22,11 +22,11 @@ Este proyecto se ha llevado a cabo conjuntamente con la asignatura de Diseño de
 
 ## Seguridad
 
-Respecto a la seguridad se garantiza que los datos y credenciales de los usuarios quedan salvaguardados de cualquier ataque, para ello se ha usado un sistema criptográfico basado en hashes que lo garantiza.
+Respecto a la seguridad se garantiza que los datos y credenciales de los usuarios quedan salvaguardados de cualquier ataque, para ello se ha usado un sistema criptográfico basado en hashes(**SHA 256**) que garantiza la autenticidad e integridad.
 
 ## Infraestructura
 
-Se creará en la nube la infraestructura necesaria para la aplicación, siendo necesario la instalación de diferentes librerías para su correcto funcionamiento.
+Se creará en la nube la infraestructura necesaria para la aplicación, siendo necesario el provisionamiento y la instalación de diferentes librerías para su correcto funcionamiento.
 
 Resumen:
 -	1.Sistema web donde interaccionan varios usuarios.
@@ -38,7 +38,7 @@ Resumen:
 
 Python permite como herramienta de construcción el uso del archivo *manage.py* , es el que he usado en mi caso, puede verse en [travis](https://travis-ci.org) y [snap-ci](https://snap-ci.com/) como lo uso para la construcción y el posterior testeo.
 
-Además se añaden los archivos [create_and_run](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIV/create_and_run.sh), [docker_install_and_run](https://github.com/javiergarridomellado/DAI/blob/master/scripts/docker_install_and_run.sh), [heroku_deploy](https://github.com/javiergarridomellado/DAI/blob/master/scripts/heroku_deploy.sh) y [run_app](https://github.com/javiergarridomellado/DAI/blob/master/scripts/run_app.sh) para el despligue automático en una máquina virtual de Azure, la construcción de un entorno seguro (contenedor Docker), su posterior despliegue automático en el PAAS de Heroku y el arranque de la aplicación en local respectivamente.
+Además se añaden los archivos [create_and_run](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIV/create_and_run.sh), [docker_install_and_run](https://github.com/javiergarridomellado/DAI/blob/master/scripts/docker_install_and_run.sh), [heroku_deploy](https://github.com/javiergarridomellado/DAI/blob/master/scripts/heroku_deploy.sh) y [run_app](https://github.com/javiergarridomellado/DAI/blob/master/scripts/run_app.sh) para el despligue automático en una máquina virtual de Azure( inclusive la posibilidad de despliegue en una máquina local de [VirtualBox](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIVLocal/create_and_run.sh) ), la construcción de un entorno seguro (contenedor Docker), su posterior despliegue automático en el PAAS de Heroku y el arranque de la aplicación en local respectivamente.
 
 ## Instalación local de la aplicación
 
