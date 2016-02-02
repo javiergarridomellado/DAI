@@ -209,5 +209,7 @@ $ sudo dpkg -i vagrant_1.8.1_x86_64.deb
 $ vagrant plugin install vagrant-azure
 ```
 
+Se proporciona para mayor comodidad el script [install_tools.sh](https://github.com/javiergarridomellado/DAI/blob/master/scripts/install_tools.sh)
+
 
 
