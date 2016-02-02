@@ -186,10 +186,12 @@ Aquí le indico como hosts "localhost" ya que esto se ejecuta dentro de la máqu
 - El **watchdog** Supervisor se encarga de monitorizar el servidor Gunicorn para que esté siempre activo.
 - El servidor web Nginx se encarga de servir el contenido estático, se configura un proxy para servir a través del 80 lo que sirve Gunicorn.
 
-La configuración de Nginx puede verse [aqui](https://github.com/javiergarridomellado/DAI/blob/master/scripts/webconfiguration/default)
-La configuración de Supervisor puede verse [aqui](https://github.com/javiergarridomellado/DAI/blob/master/scripts/webconfiguration/supervisor.conf) 
+La configuración de Nginx puede verse [aqui](https://github.com/javiergarridomellado/DAI/blob/master/scripts/webconfiguration/default).
 
-Para realizar el despliegue basta con ejecutar [create_and_run](https://github.com/javiergarridomellado/DAI/blob/master/VagrantAzure/create_and_run.sh) que consta de lo siguiente:
+La configuración de Supervisor puede verse [aqui](https://github.com/javiergarridomellado/DAI/blob/master/scripts/webconfiguration/supervisor.conf).
+ 
+
+Para realizar el despliegue basta con ejecutar el script [create_and_run](https://github.com/javiergarridomellado/DAI/blob/master/VagrantAzure/create_and_run.sh) que consta de lo siguiente:
 ```
 #!/bin/bash
 vagrant box add azure https://github.com/msopentech/vagrant-azure/raw/master/dummy.box
