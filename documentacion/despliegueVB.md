@@ -43,46 +43,121 @@ En el segundo bloque  se ejecuta el "playbook" de Ansible que se llama [iv.yml](
 - hosts: localhost
   sudo: yes
   remote_user: vagrant
+  vars:
+    mysql_root_password: 
   tasks:
   - name: Actualizar sistema 
-    apt: update_cache=yes upgrade=dist  
+    apt: update_cache=yes upgrade=dist 
+  - name: Install MySQL
+    apt: name={{ item }} update_cache=yes cache_valid_time=3600 state=present
+    sudo: yes
+    with_items:
+    - python-mysqldb
+    - mysql-server
+  - name: Arrancar servicio MySQL 
+    sudo: yes
+    service: 
+      name: mysql 
+      state: started
+      enabled: true
+  - name: actualizacion password root mysql
+    sudo: yes
+    mysql_user: 
+      name: root 
+      host: "{{ item }}" 
+      password: "{{ mysql_root_password }}"
+      login_user: root
+      login_password: "{{ mysql_root_password }}"
+      check_implicit_admin: yes
+      priv: "*.*:ALL,GRANT"
+    with_items:
+      - "{{ ansible_hostname }}"
+      - 127.0.0.1
+      - ::1
+      - localhost 
   - name: Instalar paquetes
-    apt: name=python-setuptools state=present
-    apt: name=build-essential state=present
-    apt: name=python-pip state=present
-    apt: name=git state=present
-  - name: Ins Pyp
-    action: apt pkg=python-pip
-  - name: Postgre
+    apt: name={{ item }} update_cache=yes cache_valid_time=3600 state=present
+    sudo: yes
+    with_items:
+    - python-setuptools
+    - build-essential 
+    - python-pip
+    - git 
+  - name: Instalar servidor Gunicorn
+    command: sudo pip install gunicorn
+  - name: Instalar servidor Nginx y supervisor
+    apt: name={{ item }} update_cache=yes cache_valid_time=3600 state=present
+    sudo: yes
+    with_items:
+    - nginx
+    - supervisor  
+  - name: Conector Postgre Heroku
     command: sudo easy_install pip
     command: sudo pip install --upgrade pip
     command: sudo apt-get install -y python-dev libpq-dev python-psycopg2
   - name: Obtener aplicacion git
-    git: repo=https://github.com/javiergarridomellado/IV_javiergarridomellado.git  dest=DAI clone=yes force=yes
+    git: repo=https://github.com/javiergarridomellado/DAI.git  dest=DAI clone=yes force=yes
   - name: Permisos de ejecucion
     command: chmod -R +x DAI
   - name: Instalar requisitos
     command: sudo pip install -r DAI/requirements.txt
-  - name: ejecutar
-    command: nohup sudo python DAI/manage.py runserver 0.0.0.0:80
+  - name: Crear www 
+    command: sudo mkdir -p /var/www
+  - name: Copiar static
+    command: sudo cp -r DAI/static/ /var/www/
+  - name: Copiar media
+    command: sudo cp -r DAI/media/ /var/www/
+  - name: Conf supervisor
+    command: sudo mv DAI/scripts/webconfiguration/supervisor.conf /etc/supervisor/conf.d/
+  - name: Conf nginx
+    command: sudo mv DAI/scripts/webconfiguration/default /etc/nginx/sites-available/
+  - name: crear bd
+    command: mysqladmin  -h localhost -u root  create vagrant
+  - name: app configuracion produccion 
+    command: sudo mv DAI/ProyectoDAI/settings.py DAI/ProyectoDAI/bak_settings.py
+    command: sudo mv DAI/ProyectoDAI/bak2_settings.py DAI/ProyectoDAI/settings.py
+  - name: sincro bd
+    command: sudo python DAI/manage.py syncdb --noinput
+  - name: update bd
+    command: sudo python DAI/populate_restaurante.py
+  - name: Reiniciar Supervisor 
+    sudo: yes
+    service: 
+      name: supervisor 
+      state: restarted
+      enabled: true
+  - name: Reiniciar Nginx 
+    sudo: yes
+    service: 
+      name: nginx 
+      state: restarted
+      enabled: true
 ```
 
-Aquí le indico como hosts "localhost" ya que esto se ejecuta dentro de la máquina.En los task se actualiza el sistema, se instalan paquetes necesarios, se instala PostgreSQL, se clona el repositorio y por último se ejecuta la aplicación.Se usa "nohup" para que siga ejecutando la aplicación cuando se cierre el terminal.
+Aquí le indico como hosts "localhost" ya que esto se ejecuta dentro de la máquina.En los task se actualiza el sistema, se instala una base de datos MySQL, un servidor web Nginx con su correspondiente configuración, un servidor web Gunicorn, Supervisor con su correspondiente configuración para monitorizar constantemente el servidor Gunicorn, se instalan los paquetes necesarios de la aplicación, se clona el repositorio y se reinicia los servicios web para que la aplicación quede en modo de producción.
 
-Para realizar el despliegue basta con ejecutar [create_and_run](https://github.com/javiergarridomellado/IV_javiergarridomellado/blob/master/VagrantLocal/create_and_run.sh) que consta de lo siguiente:
+- El servidor web Gunicorn se encarga de servir el contenido dinámico a través del puerto 8000.
+- El **watchdog** Supervisor se encarga de monitorizar el servidor Gunicorn para que esté siempre activo.
+- El servidor web Nginx se encarga de servir el contenido estático, se configura un proxy para servir a través del 80 lo que sirve Gunicorn.
+
+La configuración de Nginx puede verse [aqui](https://github.com/javiergarridomellado/DAI/blob/master/scripts/webconfiguration/default).
+
+La configuración de Supervisor puede verse [aqui](https://github.com/javiergarridomellado/DAI/blob/master/scripts/webconfiguration/supervisor.conf).
+
+Para realizar el despliegue basta con ejecutar el script [create_and_run](https://github.com/javiergarridomellado/DAI/blob/master/VagrantLocal/create_and_run.sh) que consta de lo siguiente:
 ```
 #!/bin/bash
 vagrant box add ubuntu https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box
 vagrant up
 ```
 En él se le indica que debe descargar la "box" de Ubuntu y después realizar un "vagrant up". Ejecutado esto vemos como se crea la máquina y se provisiona. 
-![ansible](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/vagrantupazure_zpscx7wl4dk.png)
+![ansible](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/vagrantlocal_zps95e6qrly.png)
 
 Para visitar la aplicación desplegada solo es necesario usar la url *localhost:8080*:
 
-![appdespl](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/vagrantlocalprac_zpsngaayexq.png)
+![appdespl](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/appdesplegadalocal_zpsutxl6mvb.png)
 
-![ssh](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/vagrantsshlocalprac_zpspgnpiqfp.png)
+![ssh](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/sshvagrantlocal_zpsjl920y6e.png)
 
 
 *Nota: Para su correcto funcionamiento es necesario tener instalado lo siguiente :*
@@ -95,4 +170,4 @@ $ sudo dpkg -i vagrant_1.8.1_x86_64.deb
 $ vagrant plugin install vagrant-azure
 ```
 
-
+Se proporciona para mayor comodidad el script [install_tools.sh](https://github.com/javiergarridomellado/DAI/blob/master/scripts/install_tools.sh)

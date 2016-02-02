@@ -205,7 +205,7 @@ El enlace a la aplicación es el siguiente [http://restaurantejaviergarrido.clou
 
 ![appdespl](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/appdespleazure_zpsnfuqelxh.png)
 
-
+![ssh](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/sshvagrantazure_zpscbxtkuca.png)
 
 
 *Nota: Para su correcto funcionamiento es necesario tener instalado lo siguiente :*
