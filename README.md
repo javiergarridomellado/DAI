@@ -22,7 +22,7 @@ Este proyecto se ha llevado a cabo conjuntamente con la asignatura de Diseño de
 
 ## Seguridad
 
-Respecto a la seguridad se garantiza que los datos y credenciales de los usuarios quedan salvaguardados de cualquier ataque, para ello se ha usado un sistema criptográfico basado en hashes (**SHA 256**) que garantiza la autenticidad e integridad.
+Respecto a la seguridad se garantiza que los datos y credenciales de los usuarios quedan salvaguardados de cualquier ataque, para ello se ha usado un sistema criptográfico basado en hash (**SHA 256**) que garantiza la autenticidad e integridad.
 
 ## Infraestructura
 
