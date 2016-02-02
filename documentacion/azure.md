@@ -30,6 +30,6 @@ Para ello hay que seleccionar la IP pública de la máquina y disociarla, poster
 
 ![asignardns](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/asignardominio_zpscpgt6ky6.png)
 
-![ssh](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/ssh_zps47wbvejn.png)
+![ssh](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/sshdocker_zpssfuceyxe.png)
 
 Si surge alguna duda puede consultarse el siguiente [tutorial](https://azure.microsoft.com/es-es/documentation/articles/virtual-machines-create-fqdn-on-portal/)
