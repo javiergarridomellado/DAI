@@ -182,6 +182,13 @@ Por último, se ejecuta el "playbook" de Ansible que se llama [iv.yml](https://g
 
 Aquí le indico como hosts "localhost" ya que esto se ejecuta dentro de la máquina.En los task se actualiza el sistema, se instala una base de datos MySQL, un servidor web Nginx con su correspondiente configuración, un servidor web Gunicorn, Supervisor con su correspondiente configuración para monitorizar constantemente el servidor Gunicorn, se instalan los paquetes necesarios de la aplicación, se clona el repositorio y se reinicia los servicios web para que la aplicación quede en modo de producción.
 
+- El servidor web Gunicorn se encarga de servir el contenido dinámico a través del puerto 8000.
+- El **watchdog** Supervisor se encarga de monitorizar el servidor Gunicorn para que esté siempre activo.
+- El servidor web Nginx se encarga de servir el contenido estático, se configura un proxy para servir a través del 80 lo que sirve Gunicorn.
+
+La configuración de Nginx puede verse [aqui](https://github.com/javiergarridomellado/DAI/blob/master/scripts/webconfiguration/default)
+La configuración de Supervisor puede verse [aqui](https://github.com/javiergarridomellado/DAI/blob/master/scripts/webconfiguration/supervisor.conf) 
+
 Para realizar el despliegue basta con ejecutar [create_and_run](https://github.com/javiergarridomellado/DAI/blob/master/VagrantAzure/create_and_run.sh) que consta de lo siguiente:
 ```
 #!/bin/bash
