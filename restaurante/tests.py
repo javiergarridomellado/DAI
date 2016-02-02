@@ -10,8 +10,6 @@ from django.test.client import RequestFactory
 
 
 
-
-
 class BarMethodTests(TestCase):
 
 	#def test_nombre_bar(self):
@@ -52,23 +50,3 @@ class TapaMethodTests(TestCase):
 		self.assertEqual(Hamb.bar,bPaco)
 		self.assertEqual(Pip.bar,bVietto)
 		print("Testeo de pertenencia correcto.")
-
-from rest_framework import status
-from rest_framework.test import APITestCase
-
-class BarRESTTests(APITestCase):
-	def test_crear_bar(self):
-		data = {"nombre" : "test", "direccion" : "dirtest", "numerovisitas" : 5 }
-		response= self.client.post("/lista_bares/", data, format="json")
-		self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-		self.assertEqual(Bar.objects.get().nombre, "test")
-		print("Creado BAR correctamente con interfaz REST")
-		
-	def test_mostrar_bares(self):
-		bar1 = Bar(nombre="test", direccion="dirtest", numerovisitas=5)
-		bar1.save()
-		bar2 = Bar(nombre="test2", direccion="dirtest2", numerovisitas=10)
-		bar2.save()
-		response = self.client.get("/lista_bares/")
-		self.assertEqual(response.content, b'[{"nombre":"test","direccion":"dirtest","numerovisitas":5},{"nombre":"test2","direccion":"dirtest2","numerovisitas":10}]')
-		print("Listado de BARES realizado con exito mediante interfaz REST")

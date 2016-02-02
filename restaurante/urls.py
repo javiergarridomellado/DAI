@@ -17,7 +17,6 @@ urlpatterns = patterns('',
 		url(r'^add_bar/$', views.add_bar, name='add_bar'),
 		url(r'^bar/(?P<bar_name_slug>[\w\-]+)/add_tapa/$', views.add_tapa, name='add_tapa'),
 		url(r'^reclama_datos/', views.reclama_datos, name='reclama_datos'),
-		url(r'^lista_bares/$', views.lista_bares, name='lista_bares'),
 		
 )
 

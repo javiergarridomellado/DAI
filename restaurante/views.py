@@ -10,8 +10,6 @@ from django.contrib.auth.decorators import login_required
 from django.http import JsonResponse
 
 
-
-
 def index(request):
 	bar_list = Bar.objects.order_by('nombre')[:5] #orden ascendente a-z, orden descendente z-a con ('-nombre')
 	top_bares = Bar.objects.order_by('-numerovisitas')[:3]
@@ -207,41 +205,6 @@ def reclama_datos (request):
 
 
 
-
-
-
-from django.views.decorators.csrf import csrf_exempt
-from rest_framework.renderers import JSONRenderer
-from rest_framework.parsers import JSONParser
-from rest_framework import status
-from .serializers import *
-
-class JSONResponse(HttpResponse):
-	"""
-	An HttpResponse that renders its content into JSON.
-	"""
-	def __init__(self, data, **kwargs):
-		content = JSONRenderer().render(data)
-		kwargs['content_type'] = 'application/json'
-		super(JSONResponse, self).__init__(content, **kwargs)
-
-@csrf_exempt
-def lista_bares(request):
-	"""
-	Listado de bares sino lo crea 
-	"""
-	if request.method == 'GET':
-		bares = Bar.objects.all()
-		serializer = BarSerializer(bares, many=True)
-		return JSONResponse(serializer.data)
-
-	elif request.method == 'POST':
-		data = JSONParser().parse(request)
-		serializer = BarSerializer(data=data)
-		if serializer.is_valid():
-			serializer.save()
-			return JSONResponse(serializer.data, status=201)
-		return JSONResponse(serializer.errors, status=400)
 
 #datos={'lista_bARES':['BAR',], 'V':[]}
 
