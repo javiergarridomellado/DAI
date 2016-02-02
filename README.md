@@ -63,7 +63,7 @@ Puede verse los correspondientes [tests](https://github.com/javiergarridomellado
 
 ##Integración continua
 
-En este paso he elegido dos sistemas de integración continua de modo que cada cambio que se realice implique una ejecución de los tests mencionados anteriormente, de esta manera se comprueba que la aplicación sigue funcionando correctamente.
+En este paso he elegido dos sistemas de integración continua de modo que cada cambio que realice implique una ejecución de los tests mencionados anteriormente, de esta manera se comprueba que la aplicación sigue funcionando correctamente.
 
 En mi caso, he realizado la integración continua con [Travis](https://travis-ci.org/javiergarridomellado/DAI) y con [snap-ci](https://snap-ci.com/javiergarridomellado/DAI/branch/master) ya que me parecieron sencillos y muy completos.
 
@@ -104,7 +104,7 @@ Sino se desea usar el script puede descargarse la imagen directamente ejecutando
  ```
 sudo docker run -t -i javiergarridomellado/dai:dai /bin/bash
 ```
-Para mayor comodidad hacer un reenvio de puertos de la siguiente manera:
+Para mayor comodidad se puede hacer un reenvio de puertos de la siguiente manera( esto evita tener que buscar la ip del docker ):
 ```
 docker run -t -i -p 8000:8000 javiergarridomellado/dai:dai /bin/bash
 ```
@@ -113,7 +113,7 @@ docker run -t -i -p 8000:8000 javiergarridomellado/dai:dai /bin/bash
 
 ![reenv](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/reenv_zpsrts3yndc.png)
 
-## Automatización o Modo de Uso ( Online )
+### Automatización o Modo de Uso ( Online )
 
 Consultar el apartado de [Despliegue Remoto](https://github.com/javiergarridomellado/DAI/blob/master/documentacion/fabfile.md).
 
@@ -121,7 +121,7 @@ Notar que se ha añadido un script [heroku_deploy.sh](https://github.com/javierg
 
 
 
-## Automatización o Modo de Uso ( Local )
+### Automatización o Modo de Uso ( Local )
 
 Para facilitar el uso de la aplicación se han añadido tres [scripts](https://github.com/javiergarridomellado/DAI/tree/master/scripts) de manera que cualquier persona con un conocimento básico pueda probarla en un entorno tanto aislado como online.
 
@@ -135,7 +135,7 @@ Con esto nos encontramos dentro de la imagen descargada, la cual tiene la aplica
 
 ![dockerrun](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/dokerrun_zpsatftkyxx.png)
 
-### Ejecución 
+#### Ejecución 
 
 De esta manera se ejecuta la aplicación de manera local(obviamente aislado del sistema anfitrión ya que se encuentra dentro del contenedor):
 - Ejecutar la orden `ifconfig` para conocer la IP que hay que poner en el navegador.
