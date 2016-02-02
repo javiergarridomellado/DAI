@@ -1,6 +1,6 @@
 # Integración continua con Travis
 
-Para el uso de Travis los pasos seguidos han sido:
+Para el uso de Travis los pasos que se han seguido han sido:
 - Registrarse en la página y sincronizar el repositorio.
 - Tener un archivo de testeo de la aplicación.
 - Tener un archivo manage.py que facilite la automatización del testeo.
@@ -20,22 +20,21 @@ script:
 ```
 Por último una captura de una modificación realizada al código del repositorio:
 
-![travis](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/travis_zpsjqr6xhcs.png)
+![travis](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/travis_zpso5318taj.png)
 
 # Integración continua con Snap CI
 
 Se añade ademas un proceso de integración continua junto al despliegue en Heroku mediante [Snap-CI](https://snap-ci.com).Desde la interfaz web realizo la siguiente configuración:
 
-![paso1](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/snap1_zpsgowrqt6s.png)
+![paso1](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/snapci_zpsonq9bl1n.png)
 
-![paso2](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/snaptest_zpsjmbr7ezk.png)
+![paso2](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/snapci2_zpsnzjcntgi.png)
 
-![paso3](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/snapdespliegue_zpsgoc8n8bo.png)
+![paso3](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/snapci3_zpsw6xgxcjm.png)
 
-![resultados1](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/snappasantest_zpstn0bgbtl.png)
+![resultados1](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/snapciresultados2_zpsoichnc6r.png)
 
-![resultados2](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/snaptest2_zps2t6125ue.png)
+![resultados2](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/snapciresultados_zpsafei2lbw.png)
 
-![resultados3](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/snapdespliegue2_zpsgmdw0np4.png)
 
 Con todo esto queda realizado la integración continua, cada vez que se haga un push al repositorio se pasan los tests y si son satisfactorio se levanta la app.

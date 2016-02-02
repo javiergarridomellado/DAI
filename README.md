@@ -26,7 +26,7 @@ Respecto a la seguridad se garantiza que los datos y credenciales de los usuario
 
 ## Infraestructura
 
-Se creará en la nube la infraestructura necesaria para la aplicación, siendo necesario el provisionamiento y la instalación de diferentes librerías para su correcto funcionamiento.
+Se ha creado en la nube la infraestructura necesaria para la aplicación, habiendo sido necesario el provisionamiento y la instalación de diferentes librerías para su correcto funcionamiento.
 
 Resumen:
 -	1.Sistema web donde interaccionan varios usuarios.
