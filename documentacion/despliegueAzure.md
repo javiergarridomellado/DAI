@@ -9,7 +9,7 @@ vagrant plugin install vagrant-azure
 
 ![installvagrantazure](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/installvagranazure_zpsad7pzrjg.png)
 
-El siguiente paso es loguearse y conseguir información de las credenciales de Azure( al ejecutar **azure account download** hay que acceder al enlace que nos facilita):
+El siguiente paso es loguearse y conseguir información de las credenciales de Azure (al ejecutar **azure account download** hay que acceder al enlace que nos facilita):
 ```
 azure login
 azure account download
@@ -41,10 +41,9 @@ openssl req -x509 -key ~/.ssh/id_rsa -nodes -days 365 -newkey rsa:2048 -out azur
 cat azurevagrant.key > azurevagrant.pem
 ```
 
-Realizado estos pasos se procede a definir el archivo [Vagrantfile](https://github.com/javiergarridomellado/IV_javiergarridomellado/blob/master/VagrantAzure/Vagrantfile) que se encarga de la creación de la máquina virtual en Azure:
+Realizado estos pasos se procede a definir el archivo [Vagrantfile](https://github.com/javiergarridomellado/DAI/blob/master/VagrantAzure/Vagrantfile) que se encarga de la creación de la máquina virtual en Azure:
 ```
 Vagrant.configure('2') do |config|
-
   config.vm.box = 'azure'
   config.vm.network "public_network"
   config.vm.network "private_network",ip: "192.168.56.10", virtualbox__intnet: "vboxnet0"
@@ -59,7 +58,7 @@ Vagrant.configure('2') do |config|
       azure.subscription_id = '477d87d6-b8d0-4025-8c1f-a3de5c520c99'
       azure.vm_image = 'b39f27a8b8c64d52b05eac6a62ebad85__Ubuntu-14_04_2-LTS-amd64-server-20150506-en-us-30GB'
       azure.vm_name = 'restaurante'
-      azure.cloud_service_name = 'apuestas'  
+      azure.cloud_service_name = 'restaurantejaviergarrido' 
       azure.vm_password = 'Clave#Javi#1'
       azure.vm_location = 'Central US' 
       azure.ssh_port = '22'
@@ -73,6 +72,7 @@ Vagrant.configure('2') do |config|
         ansible.host_key_checking = false
   end
 end
+
 ```
 
 En el primer bloque lo que hago es indicarle el box que va a usar, en este caso Azure, que tenga acceso a Internet mediante una red pública, una red privada, que haga reenvio de puertos y le aplico como hostname "localhost" para que Ansible pueda conectar con la máquina.
@@ -84,33 +84,105 @@ Por último, se ejecuta el "playbook" de Ansible que se llama [iv.yml](https://g
 - hosts: localhost
   sudo: yes
   remote_user: vagrant
+  vars:
+    mysql_root_password: 
   tasks:
   - name: Actualizar sistema 
-    apt: update_cache=yes upgrade=dist  
+    apt: update_cache=yes upgrade=dist 
+  - name: Install MySQL
+    apt: name={{ item }} update_cache=yes cache_valid_time=3600 state=present
+    sudo: yes
+    with_items:
+    - python-mysqldb
+    - mysql-server
+  - name: Arrancar servicio MySQL 
+    sudo: yes
+    service: 
+      name: mysql 
+      state: started
+      enabled: true
+  - name: actualizacion password root mysql
+    sudo: yes
+    mysql_user: 
+      name: root 
+      host: "{{ item }}" 
+      password: "{{ mysql_root_password }}"
+      login_user: root
+      login_password: "{{ mysql_root_password }}"
+      check_implicit_admin: yes
+      priv: "*.*:ALL,GRANT"
+    with_items:
+      - "{{ ansible_hostname }}"
+      - 127.0.0.1
+      - ::1
+      - localhost 
   - name: Instalar paquetes
-    apt: name=python-setuptools state=present
-    apt: name=build-essential state=present
-    apt: name=python-pip state=present
-    apt: name=git state=present
-  - name: Ins Pyp
-    action: apt pkg=python-pip
-  - name: Postgre
+    apt: name={{ item }} update_cache=yes cache_valid_time=3600 state=present
+    sudo: yes
+    with_items:
+    - python-setuptools
+    - build-essential 
+    - python-pip
+    - git 
+  - name: Instalar servidor Gunicorn
+    command: sudo pip install gunicorn
+  - name: Instalar servidor Nginx y supervisor
+    apt: name={{ item }} update_cache=yes cache_valid_time=3600 state=present
+    sudo: yes
+    with_items:
+    - nginx
+    - supervisor  
+  - name: Conector Postgre Heroku
     command: sudo easy_install pip
     command: sudo pip install --upgrade pip
     command: sudo apt-get install -y python-dev libpq-dev python-psycopg2
   - name: Obtener aplicacion git
-    git: repo=https://github.com/javiergarridomellado/IV_javiergarridomellado.git  dest=DAI clone=yes force=yes
+    git: repo=https://github.com/javiergarridomellado/DAI.git  dest=DAI clone=yes force=yes
   - name: Permisos de ejecucion
     command: chmod -R +x DAI
   - name: Instalar requisitos
     command: sudo pip install -r DAI/requirements.txt
-  - name: ejecutar
-    command: nohup sudo python DAI/manage.py runserver 0.0.0.0:80
+  - name: Crear www 
+    command: sudo mkdir -p /var/www
+  - name: Copiar static
+    command: sudo cp -r DAI/static/ /var/www/
+  - name: Copiar media
+    command: sudo cp -r DAI/media/ /var/www/
+  - name: Conf supervisor
+    command: sudo mv DAI/scripts/webconfiguration/supervisor.conf /etc/supervisor/conf.d/
+  - name: Conf nginx
+    command: sudo mv DAI/scripts/webconfiguration/default /etc/nginx/sites-available/
+  - name: crear bd
+    command: mysqladmin  -h localhost -u root  create vagrant
+  - name: app configuracion produccion 
+    command: sudo mv DAI/ProyectoDAI/settings.py DAI/ProyectoDAI/bak_settings.py
+    command: sudo mv DAI/ProyectoDAI/bak2_settings.py DAI/ProyectoDAI/settings.py
+  - name: sincro bd
+    command: sudo python DAI/manage.py syncdb --noinput
+  - name: update bd
+    command: sudo python DAI/populate_restaurante.py
+  - name: Reiniciar Supervisor 
+    sudo: yes
+    service: 
+      name: supervisor 
+      state: restarted
+      enabled: true
+  - name: Reiniciar Nginx 
+    sudo: yes
+    service: 
+      name: nginx 
+      state: restarted
+      enabled: true
+    #command: sudo service nginx restart
+    #command: sudo service supervisor restart
+  #- name: ejecutar
+    #command: nohup sudo python DAI/manage.py runserver 0.0.0.0:80
+
 ```
 
-Aquí le indico como hosts "localhost" ya que esto se ejecuta dentro de la máquina.En los task se actualiza el sistema, se instalan paquetes necesarios, se instala PostgreSQL, se clona el repositorio y por último se ejecuta la aplicación.Se usa "nohup" para que siga ejecutando la aplicación cuando se cierre el terminal.
+Aquí le indico como hosts "localhost" ya que esto se ejecuta dentro de la máquina.En los task se actualiza el sistema, se instala una base de datos MySQL, un servidor web Nginx con su correspondiente configuración, un servidor web Gunicorn, Supervisor con su correspondiente configuración para monitorizar constantemente el servidor Gunicorn, se instalan los paquetes necesarios de la aplicación, se clona el repositorio y se reinicia los servicios web para que la aplicación quede en modo de producción.
 
-Para realizar el despliegue basta con ejecutar [create_and_run](https://github.com/javiergarridomellado/IV_javiergarridomellado/blob/master/VagrantAzure/create_and_run.sh) que consta de lo siguiente:
+Para realizar el despliegue basta con ejecutar [create_and_run](https://github.com/javiergarridomellado/DAI/blob/master/VagrantAzure/create_and_run.sh) que consta de lo siguiente:
 ```
 #!/bin/bash
 vagrant box add azure https://github.com/msopentech/vagrant-azure/raw/master/dummy.box
@@ -118,11 +190,11 @@ vagrant up --provider=azure
 ```
 En él se le indica que debe descargar la "box" de Azure y después realizar un "vagrant up". Ejecutado esto vemos como se crea la máquina y se provisiona. 
 
-![ansible](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/vagrantupazure_zpscx7wl4dk.png)
+![ansible](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/vagrantazure_zps3fcm3fc4.png)
 
-El enlace a la aplicación es el siguiente [http://apuestas.cloudapp.net/](http://apuestas.cloudapp.net/)
+El enlace a la aplicación es el siguiente [http://restaurantejaviergarrido.cloudapp.net/restaurante/](http://restaurantejaviergarrido.cloudapp.net/restaurante/)
 
-![appdespl](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/vagrantazureprac_zps0btpmjnn.png)
+![appdespl](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/appdespleazure_zpsnfuqelxh.png)
 
 
 
