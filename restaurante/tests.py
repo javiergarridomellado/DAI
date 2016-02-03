@@ -58,7 +58,7 @@ from rest_framework.test import APITestCase
 class BarRESTTests(APITestCase):
 	def test_crear_bar(self):
 		data = {"nombre" : "test", "direccion" : "dirtest", "numerovisitas" : 5 }
-		response= self.client.post("/lista_bares/", data, format="json")
+		response= self.client.post("/restaurante/lista_bares/", data, format="json")
 		self.assertEqual(response.status_code, status.HTTP_201_CREATED)
 		self.assertEqual(Bar.objects.get().nombre, "test")
 		print("Creado BAR correctamente con interfaz REST")
@@ -68,6 +68,6 @@ class BarRESTTests(APITestCase):
 		bar1.save()
 		bar2 = Bar(nombre="test2", direccion="dirtest2", numerovisitas=10)
 		bar2.save()
-		response = self.client.get("/lista_bares/")
+		response = self.client.get("/restaurante/lista_bares/")
 		self.assertEqual(response.content, b'[{"nombre":"test","direccion":"dirtest","numerovisitas":5},{"nombre":"test2","direccion":"dirtest2","numerovisitas":10}]')
 		print("Listado de BARES realizado con exito mediante interfaz REST")
