@@ -55,19 +55,19 @@ class TapaMethodTests(TestCase):
 from rest_framework import status
 from rest_framework.test import APITestCase
 
-class BarRESTTests(APITestCase):
-	def test_crear_bar(self):
-		data = {"nombre" : "test", "direccion" : "dirtest", "numerovisitas" : 5 }
-		response= self.client.post("/restaurante/lista_bares/", data, format="json")
+class BarREST(APITestCase):
+	def test_creacion_bar(self):
+		data = {"nombre" : "testeo", "direccion" : "direccion", "numerovisitas" : 50 }
+		response= self.client.post("/restaurante/listado_bares/", data, format="json")
 		self.assertEqual(response.status_code, status.HTTP_201_CREATED)
-		self.assertEqual(Bar.objects.get().nombre, "test")
-		print("Creado BAR correctamente con interfaz REST")
+		self.assertEqual(Bar.objects.get().nombre, "testeo")
+		print("Creacion de BAR correcta con interfaz REST")
 		
 	def test_mostrar_bares(self):
-		bar1 = Bar(nombre="test", direccion="dirtest", numerovisitas=5)
+		bar1 = Bar(nombre="testeo", direccion="direccion", numerovisitas=50)
 		bar1.save()
-		bar2 = Bar(nombre="test2", direccion="dirtest2", numerovisitas=10)
+		bar2 = Bar(nombre="testeo2", direccion="direccion2", numerovisitas=100)
 		bar2.save()
-		response = self.client.get("/restaurante/lista_bares/")
-		self.assertEqual(response.content, b'[{"nombre":"test","direccion":"dirtest","numerovisitas":5},{"nombre":"test2","direccion":"dirtest2","numerovisitas":10}]')
-		print("Listado de BARES realizado con exito mediante interfaz REST")
+		response = self.client.get("/restaurante/listado_bares/")
+		self.assertEqual(response.content, b'[{"nombre":"testeo","direccion":"direccion","numerovisitas":50},{"nombre":"testeo2","direccion":"direccion2","numerovisitas":100}]')
+		print("Listado de BARES OK mediante interfaz REST")

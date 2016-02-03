@@ -223,7 +223,7 @@ class JSONResponse(HttpResponse):
 		super(JSONResponse, self).__init__(content, **kwargs)
 
 @csrf_exempt
-def lista_bares(request):
+def listado_bares(request):
 	"""
 	Lista los bares, o crea uno
 	"""
