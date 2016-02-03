@@ -70,4 +70,4 @@ class BarRESTTests(APITestCase):
 		bar2.save()
 		response = self.client.get("/lista_bares/")
 		self.assertEqual(response.content, b'[{"nombre":"test","direccion":"dirtest","num_visitas":5},{"nombre":"test2","direccion":"dirtest2","num_visitas":10}]')
-		print("Listado de BARES realizado con éxito mediante interfaz REST")
+		print("Listado de BARES realizado con exito mediante interfaz REST")
