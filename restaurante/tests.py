@@ -64,10 +64,10 @@ class BarRESTTests(APITestCase):
 		print("Creado BAR correctamente con interfaz REST")
 		
 	def test_mostrar_bares(self):
-		bar1 = Bar(nombre="test", direccion="dirtest", num_visitas=5)
+		bar1 = Bar(nombre="test", direccion="dirtest", numerovisitas=5)
 		bar1.save()
-		bar2 = Bar(nombre="test2", direccion="dirtest2", num_visitas=10)
+		bar2 = Bar(nombre="test2", direccion="dirtest2", numerovisitas=10)
 		bar2.save()
 		response = self.client.get("/lista_bares/")
-		self.assertEqual(response.content, b'[{"nombre":"test","direccion":"dirtest","num_visitas":5},{"nombre":"test2","direccion":"dirtest2","num_visitas":10}]')
+		self.assertEqual(response.content, b'[{"nombre":"test","direccion":"dirtest","numerovisitas":5},{"nombre":"test2","direccion":"dirtest2","numerovisitas":10}]')
 		print("Listado de BARES realizado con exito mediante interfaz REST")
