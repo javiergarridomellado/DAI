@@ -1,6 +1,6 @@
 ## Despliegue en un Iaas: Azure
 
-Para el despliegue en una máquina de Azure he usado [Vagrant](https://www.vagrantup.com/) para la creación y [Ansible](http://www.ansible.com/) para su provisionamiento y despliegue de la aplicación.
+Para el despliegue en una máquina de Azure he usado [Vagrant](https://www.vagrantup.com/) para su creación y [Ansible](http://www.ansible.com/) para su provisionamiento y despliegue de la aplicación.
 
 El primer paso es instalar el provisionador de azure para vagrant
 ```
@@ -41,7 +41,7 @@ openssl req -x509 -key ~/.ssh/id_rsa -nodes -days 365 -newkey rsa:2048 -out azur
 cat azurevagrant.key > azurevagrant.pem
 ```
 
-Realizado estos pasos se procede a definir el archivo [Vagrantfile](https://github.com/javiergarridomellado/DAI/blob/master/VagrantAzure/Vagrantfile) que se encarga de la creación de la máquina virtual en Azure:
+Realizado estos pasos se procede a definir el archivo [Vagrantfile](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIV/Vagrantfile) que se encarga de la creación de la máquina virtual en Azure:
 ```
 Vagrant.configure('2') do |config|
   config.vm.box = 'azure'
