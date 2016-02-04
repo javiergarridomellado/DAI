@@ -1,6 +1,6 @@
 ## Despliegue en VirtualBox
 
-Para el despliegue en una máquina de VirtualBox he usado [Vagrant](https://www.vagrantup.com/) para la creación y [Ansible](http://www.ansible.com/) para su provisionamiento y despliegue de la aplicación.
+Para el despliegue en una máquina de VirtualBox he usado [Vagrant](https://www.vagrantup.com/) para su creación y [Ansible](http://www.ansible.com/) para su provisionamiento y despliegue de la aplicación.
 
 El primer paso es instalar el provisionador de azure para vagrant
 ```
@@ -10,7 +10,7 @@ vagrant plugin install vagrant-azure
 ![installvagrantazure](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/installvagranazure_zpsad7pzrjg.png)
 
 
-El siguiente paso es definir el archivo [Vagrantfile](https://github.com/javiergarridomellado/IV_javiergarridomellado/blob/master/VagrantLocal/Vagrantfile) que se encarga de la creación de la máquina virtual en VirtualBox:
+El siguiente paso es definir el archivo [Vagrantfile](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIVLocal/Vagrantfile) que se encarga de la creación de la máquina virtual en VirtualBox:
 ```
 Vagrant.configure('2') do |config|
   # The most common configuration options are documented and commented below.
