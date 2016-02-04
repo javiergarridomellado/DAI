@@ -9,7 +9,6 @@
     <link rel="icon" href="http://getbootstrap.com/favicon.ico">
 
     <title>Restaurante - {% block title %}Página de Restaurantes!{% endblock %}</title>
-{% load staticfiles %}
 <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
     <!--<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">-->
@@ -127,13 +126,8 @@ console.log('aaa');
           <a class="navbar-brand" href="/restaurante/">Restaurante</a>
         </div>
         <div class="navbar-collapse collapse">
-
           <ul class="nav navbar-nav navbar-right">
-					<li><button id="boton1" class="btn btn-default btn-xs">Tamaño Letra Normal</button></li>
-					<li><button id="boton2" class="btn btn-default btn-xs">Aumentar Tamaño Letra</button></li>
-					<li><button id="boton3" class="btn btn-default btn-xs">Disminuir Tamaño Letra</button></li>
                 <li><a href="{% url 'index' %}">Home</a></li>
-					
                     {% if user.is_authenticated %}
 					
                         <li><a href="{% url 'restricted' %}">Restricted Page</a></li>
@@ -156,7 +150,9 @@ console.log('aaa');
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
                 {% block side_block %}
-					
+					<button id="boton1" class="btn btn-default btn-xs">Tamaño Letra Normal</button>
+					<button id="boton2" class="btn btn-default btn-xs">Aumentar Tamaño Letra</button>
+					<button id="boton3" class="btn btn-default btn-xs">Disminuir Tamaño Letra</button>
 
 				{% endblock %}
 
