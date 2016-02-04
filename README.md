@@ -184,7 +184,7 @@ Los servicios utilizados en modo producción son los siguientes:
 
 ### Despliegue en VirtualBox
 
-Debido a que no todo el mundo dispone de cuenta en Azure facilito la opción del despliegue en local gracias a VirtualBox, para ello al igual que antes, se define la variable de entorno `export ANSIBLE_HOSTS=~/ruta/ansible_hosts` y ya solo basta con ejecutar el scrip [create_and_run](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIVLocal/create_and_run.sh).
+Debido a que no todo el mundo dispone de cuenta en Azure facilito la opción del despliegue local gracias a VirtualBox, para ello al igual que antes, se define la variable de entorno `export ANSIBLE_HOSTS=~/ruta/ansible_hosts` y ya solo basta con ejecutar el scrip [create_and_run](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIVLocal/create_and_run.sh).
 
 ```
 ./create_and_run.sh
