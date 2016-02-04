@@ -24,6 +24,7 @@ SECRET_KEY = '26*swq94+rg+-2tc2es6j&d#&(g4@@xe7vh1hu1)6*z^v@pd2q'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+#DEBUG = False
 
 TEMPLATE_DEBUG = True
 
@@ -95,18 +96,18 @@ if ON_HEROKU:
 	DATABASE_URL='postgres://kytzveedsclzaf:eIJAAuElYvSxPK-vmSdXG9Hjv8@ec2-107-21-219-235.compute-1.amazonaws.com:5432/df9sfr7a9b8vjf'
 	DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
 
-ON_AZURE = os.environ.get('AZURE')
-if ON_AZURE:
-	DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'vagrant',
-        'USER': 'root',
-        'PASSWORD':'',
-        'HOST': '',
-        'PORT': '',
-    }
-}
+#ON_AZURE = os.environ.get('AZURE')
+#if ON_AZURE:
+#	DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.mysql',
+#        'NAME': 'vagrant',
+#        'USER': 'root',
+#        'PASSWORD':'',
+#        'HOST': '',
+#        'PORT': '',
+#    }
+#}
 STATIC_ROOT = 'staticfiles'
 
 # Internationalization
