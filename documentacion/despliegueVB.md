@@ -38,7 +38,7 @@ end
 
 En el primer bloque lo que hago es indicarle el box que va a usar, en este caso Ubuntu, que haga reenvio de puertos de SSH y Web y le aplico como hostname "localhost" para que Ansible pueda conectar con la máquina.
 
-En el segundo bloque  se ejecuta el "playbook" de Ansible que se llama [iv.yml](https://github.com/javiergarridomellado/IV_javiergarridomellado/blob/master/VagrantLocal/iv.yml):
+En el segundo bloque  se ejecuta el "playbook" de Ansible que se llama [iv.yml](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIVLocal/iv.yml):
 ```
 - hosts: localhost
   sudo: yes
