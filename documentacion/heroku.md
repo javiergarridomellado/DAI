@@ -113,8 +113,8 @@ Otra solución es la de usar **Cling** en el archivo **wsgi.py**.
 En mi caso ninguna de estas me funcionó y lo solucioné sustituyendo **bootstrap** por [CDN](https://www.bootstrapcdn.com/).
 Lo único que tuve que realizar fué sustituir en el template **base.html** las siguientes líneas:
 ```
-<!--<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">-->
+<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">
 ```
 
 por esta:
