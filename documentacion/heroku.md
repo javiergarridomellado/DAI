@@ -34,7 +34,7 @@ static3==0.6.1
 wheel==0.26.0
 whitenoise==2.0.4
 ```
-Puede verse que tambien se dispone de **whitenoise** para archivos estaticos, queda definido en **setting.py** para su uso si se requiere.
+Puede verse que tambien se dispone de **whitenoise** para servir archivos estaticos (aunque hay otras maneras de realizar lo mismo, se explica a posteriori).
 Tras el registro en Heroku hay que ejecutar una serie de comandos para tener apunto el despliegue:
 ```
 wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh   
@@ -95,9 +95,30 @@ application = Cling(get_wsgi_application())
 - Ejecutar los comando **heroku run python manage.py makemigrations**, **heroku run python manage.py migrate** y **heroku run python manage.py createsuperuser** para sincronizar la base de datos PostgreSQL.
  
 
-La aplicacion [desplegada](https://restaurantejaviergarrido.herokuapp.com/)
+La aplicacion [desplegada](https://restaurantejaviergarrido.herokuapp.com/restaurante/)
 
 Si hay algun problema en algun push de heroku hacer:
 ```
 heroku create --stack cedar
+```
+
+![app](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/appheroku_zpssfomqoh8.png)
+
+## Como resolver los problemas de CSS en Heroku
+
+Según la [bibliografía oficial](https://devcenter.heroku.com/articles/django-assets) estos se solucionan usando **whitenoise** en los archivos **setting.py** y **wsgi.py**, además ejecutando el comando ` python manage.py collectstatic --dry-run --noinput`.
+
+Otra solución es la de usar **Cling** en el archivo **wsgi.py**.
+
+En mi caso ninguna de estas me funcionó y lo solucioné sustituyendo **bootstrap** por [CDN](https://www.bootstrapcdn.com/).
+Lo único que tuve que realizar fué sustituir en el template **base.html** las siguientes líneas:
+```
+<!--<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://getbootstrap.com/examples/dashboard/dashboard.css" rel="stylesheet">-->
+```
+
+por esta:
+```
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
 ```
