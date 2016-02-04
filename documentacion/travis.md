@@ -32,7 +32,7 @@ Se añade ademas un proceso de integración continua junto al despliegue en Hero
 
 ![paso3](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/snapci3_zpsw6xgxcjm.png)
 
-![resultados1](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/snapciresultados2_zpsoichnc6r.png)
+![resultados1](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/snapciresultados3_zpsxu7gwja7.png)
 
 ![resultados2](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/snapciresultados_zpsafei2lbw.png)
 

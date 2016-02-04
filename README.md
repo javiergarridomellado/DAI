@@ -22,14 +22,14 @@ Este proyecto se ha llevado a cabo conjuntamente con la asignatura de Diseño de
 
 ## Seguridad
 
-Respecto a la seguridad se garantiza que los datos y credenciales de los usuarios quedan salvaguardados de cualquier ataque, para ello se ha usado un sistema criptográfico basado en hash (**SHA 256**) que garantiza la autenticidad e integridad.
+Respecto a la seguridad se garantiza que los datos y credenciales de los usuarios quedan salvaguardados de cualquier ataque, para ello se ha usado un sistema criptográfico basado en hash (**SHA 256**) que garantiza la autenticidad e integridad de los usuarios de la aplicación.
 
 ## Infraestructura
 
 Se ha creado en la nube la infraestructura necesaria para la aplicación, habiendo sido necesario el provisionamiento y la instalación de diferentes librerías para su correcto funcionamiento.
 
 Resumen:
--	1.Sistema web donde interaccionan varios usuarios.
+-	1.Aplicación web donde interaccionan varios usuarios.
 -	2.Servidores web.
 -	3.Base de datos.
 
@@ -38,7 +38,7 @@ Resumen:
 
 Python permite como herramienta de construcción el uso del archivo *manage.py* , es el que he usado en mi caso, puede verse en [travis](https://travis-ci.org) y [snap-ci](https://snap-ci.com/) como lo uso para la construcción y el posterior testeo.
 
-Además se añaden los archivos [create_and_run](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIV/create_and_run.sh), [docker_install_and_run](https://github.com/javiergarridomellado/DAI/blob/master/scripts/docker_install_and_run.sh), [heroku_deploy](https://github.com/javiergarridomellado/DAI/blob/master/scripts/heroku_deploy.sh) y [run_app](https://github.com/javiergarridomellado/DAI/blob/master/scripts/run_app.sh) para el despligue automático en una máquina virtual de Azure (inclusive la posibilidad de despliegue en una máquina local de [VirtualBox](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIVLocal/create_and_run.sh) ), la construcción de un entorno seguro (contenedor Docker), su posterior despliegue automático en el PAAS de Heroku y el arranque de la aplicación en local respectivamente.
+Además se añaden los archivos [create_and_run](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIV/create_and_run.sh), [docker_install_and_run](https://github.com/javiergarridomellado/DAI/blob/master/scripts/docker_install_and_run.sh), [heroku_deploy](https://github.com/javiergarridomellado/DAI/blob/master/scripts/heroku_deploy.sh), [run_app](https://github.com/javiergarridomellado/DAI/blob/master/scripts/run_app.sh) e [install_tools](https://github.com/javiergarridomellado/DAI/blob/master/scripts/install_tools.sh) para el despligue automático en una máquina virtual de Azure (inclusive la posibilidad de despliegue en una máquina local de [VirtualBox](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIVLocal/create_and_run.sh) ), la construcción de un entorno seguro (contenedor Docker), su posterior despliegue automático en el PAAS de Heroku, el arranque de la aplicación en local y la instalación de las librerías necesarias para realizar el despliegue respectivamente.
 
 ## Instalación local de la aplicación
 
@@ -59,7 +59,7 @@ Para las pruebas he usado el sistema de testeo de Django. Basta con ejecutar el 
 
 Puede verse los correspondientes [tests](https://github.com/javiergarridomellado/DAI/blob/master/restaurante/tests.py) que se realizan.Se usan tanto para **travis** como para **snap-ci**.
 
-![tests](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/travis_zpstciokpes.png)
+![tests](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/travis2_zps4lshtctt.png)
 
 ##Integración continua
 
