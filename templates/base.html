@@ -150,16 +150,17 @@ console.log('aaa');
       <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
                 {% block side_block %}
-					<button id="boton1" class="btn btn-default btn-xs">Tamaño Letra Normal</button>
-					<button id="boton2" class="btn btn-default btn-xs">Aumentar Tamaño Letra</button>
-					<button id="boton3" class="btn btn-default btn-xs">Disminuir Tamaño Letra</button>
+					
 
 				{% endblock %}
 
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
            <div>
-                {% block body_block %}{% endblock %}
+                {% block body_block %}
+					<button id="boton1" class="btn btn-default btn-xs">Tamaño Letra Normal</button>
+					<button id="boton2" class="btn btn-default btn-xs">Aumentar Tamaño Letra</button>
+					<button id="boton3" class="btn btn-default btn-xs">Disminuir Tamaño Letra</button>{% endblock %}
                 </div>
         </div>
       </div>
