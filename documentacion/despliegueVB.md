@@ -144,7 +144,7 @@ La configuración de Nginx puede verse [aqui](https://github.com/javiergarridome
 
 La configuración de Supervisor puede verse [aqui](https://github.com/javiergarridomellado/DAI/blob/master/scripts/webconfiguration/supervisor.conf).
 
-Para realizar el despliegue basta con ejecutar el script [create_and_run](https://github.com/javiergarridomellado/DAI/blob/master/VagrantLocal/create_and_run.sh) que consta de lo siguiente:
+Para realizar el despliegue basta con ejecutar el script [create_and_run](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIVLocal/create_and_run.sh) que consta de lo siguiente:
 ```
 #!/bin/bash
 vagrant box add ubuntu https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box
