@@ -214,6 +214,11 @@ Se ha añade un [fichero](https://github.com/javiergarridomellado/DAI/blob/maste
 
 ## Comandos Básicos
 
+###Instalación de herramientas para el despliegue en Azure 
+```
+$ ./install_tools.sh
+```
+
 ###Despliegue en Azure o VirtualBox
 ```
 $ ./create_and_run.sh
