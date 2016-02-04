@@ -126,11 +126,12 @@ console.log('aaa');
           <a class="navbar-brand" href="/restaurante/">Restaurante</a>
         </div>
         <div class="navbar-collapse collapse">
-          <ul class="nav navbar-nav navbar-right">
-                <li><a href="{% url 'index' %}">Home</a></li>
-					<li><button id="boton1" class="btn btn-default btn-xs">Tamaño Letra Normal</button></li>
+<li><button id="boton1" class="btn btn-default btn-xs">Tamaño Letra Normal</button></li>
 					<li><button id="boton2" class="btn btn-default btn-xs">Aumentar Tamaño Letra</button></li>
 					<li><button id="boton3" class="btn btn-default btn-xs">Disminuir Tamaño Letra</button></li>
+          <ul class="nav navbar-nav navbar-right">
+                <li><a href="{% url 'index' %}">Home</a></li>
+					
                     {% if user.is_authenticated %}
 					
                         <li><a href="{% url 'restricted' %}">Restricted Page</a></li>
