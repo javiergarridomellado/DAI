@@ -191,7 +191,15 @@ La configuración de Nginx puede verse [aqui](https://github.com/javiergarridome
 La configuración de Supervisor puede verse [aqui](https://github.com/javiergarridomellado/DAI/blob/master/scripts/webconfiguration/supervisor.conf).
  
 
-Para realizar el despliegue basta con ejecutar el script [create_and_run](https://github.com/javiergarridomellado/DAI/blob/master/VagrantAzure/create_and_run.sh) que consta de lo siguiente:
+Para realizar el despliegue basta con ejecutar el script [deploy_Azure](https://github.com/javiergarridomellado/DAI/blob/master/scripts/deploy_Azure.sh) que consta de lo siguiente:
+```
+#!/bin/bash
+git clone https://github.com/javiergarridomellado/DAI.git
+cd DAI/VagrantIV/
+chmod 777 create_and_run.sh
+./create_and_run.sh
+```
+Puede verse que el último paso es ejecutar el script [create_and_run](https://github.com/javiergarridomellado/DAI/blob/master/VagrantAzure/create_and_run.sh) que tiene el siguiente contenido:
 ```
 #!/bin/bash
 vagrant box add azure https://github.com/msopentech/vagrant-azure/raw/master/dummy.box
