@@ -152,7 +152,7 @@ cd DAI/VagrantIVLocal/
 chmod 777 create_and_run.sh
 ./create_and_run.sh
 ```
-Puede verse que el último paso es ejecutar el script [create_and_run](https://github.com/javiergarridomellado/DAI/blob/master/VagrantAzureLocal/create_and_run.sh) que tiene el siguiente contenido:
+Puede verse que el último paso es ejecutar el script [create_and_run](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIVLocal/create_and_run.sh) que tiene el siguiente contenido:
 ```
 #!/bin/bash
 vagrant box add ubuntu https://cloud-images.ubuntu.com/vagrant/trusty/current/trusty-server-cloudimg-amd64-vagrant-disk1.box
