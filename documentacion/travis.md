@@ -14,19 +14,22 @@ python:
  - "2.7"
 
 install:
+ - sudo apt-get install libmysqlclient-dev
  - pip install -r requirements.txt
 script:
  - python manage.py test 
 ```
 Por último una captura de una modificación realizada al código del repositorio:
 
-![travis](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/travis_zpso5318taj.png)
+![travis](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/travis_zpswjlfffg8.png)
 
 # Integración continua con Snap CI
 
 Se añade ademas un proceso de integración continua junto al despliegue en Heroku mediante [Snap-CI](https://snap-ci.com).Desde la interfaz web realizo la siguiente configuración:
 
 ![paso1](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/snapci_zpsonq9bl1n.png)
+
+![pasotest](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/snapci_zpssudilbhg.png)
 
 ![paso2](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/snapci2_zpsnzjcntgi.png)
 
