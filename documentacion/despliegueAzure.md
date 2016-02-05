@@ -199,7 +199,7 @@ cd DAI/VagrantIV/
 chmod 777 create_and_run.sh
 ./create_and_run.sh
 ```
-Puede verse que el último paso es ejecutar el script [create_and_run](https://github.com/javiergarridomellado/DAI/blob/master/VagrantAzure/create_and_run.sh) que tiene el siguiente contenido:
+Puede verse que el último paso es ejecutar el script [create_and_run](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIV/create_and_run.sh) que tiene el siguiente contenido:
 ```
 #!/bin/bash
 vagrant box add azure https://github.com/msopentech/vagrant-azure/raw/master/dummy.box
