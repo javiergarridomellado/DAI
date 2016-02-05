@@ -39,8 +39,9 @@ Resumen:
 
 Python permite como herramienta de construcción el uso del archivo *manage.py* , es el que he usado en mi caso, puede verse en [travis](https://travis-ci.org) y [snap-ci](https://snap-ci.com/) como lo uso para la construcción y el posterior testeo.
 
-Además se añaden los archivos [create_and_run](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIV/create_and_run.sh), [docker_install_and_run](https://github.com/javiergarridomellado/DAI/blob/master/scripts/docker_install_and_run.sh), [heroku_deploy](https://github.com/javiergarridomellado/DAI/blob/master/scripts/heroku_deploy.sh), [run_app](https://github.com/javiergarridomellado/DAI/blob/master/scripts/run_app.sh) e [install_tools](https://github.com/javiergarridomellado/DAI/blob/master/scripts/install_tools.sh) para el despligue automático en una máquina virtual de Azure (inclusive la posibilidad de despliegue en una máquina local de [VirtualBox](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIVLocal/create_and_run.sh) ), la construcción de un entorno seguro (contenedor Docker), su posterior despliegue automático en el PAAS de Heroku, el arranque de la aplicación en local y la instalación de las librerías necesarias para realizar el despliegue respectivamente.
+Además se añaden los archivos [create_and_run](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIV/create_and_run.sh), [docker_install_and_run](https://github.com/javiergarridomellado/DAI/blob/master/scripts/docker_install_and_run.sh), [heroku_deploy](https://github.com/javiergarridomellado/DAI/blob/master/scripts/heroku_deploy.sh), [run_app](https://github.com/javiergarridomellado/DAI/blob/master/scripts/run_app.sh) e [install_tools](https://github.com/javiergarridomellado/DAI/blob/master/scripts/install_tools.sh) para el despligue automático en una máquina virtual de Azure (inclusive la posibilidad de despliegue en una máquina local de [VirtualBox](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIVLocal/create_and_run.sh) ), la construcción de un entorno seguro (contenedor Docker), su posterior despliegue automático en el PAAS de Heroku, el arranque de la aplicación en local y la instalación de las librerías necesarias para realizar el despliegue en Azure o VirtualBox respectivamente.
 
+Por último, hay dos scripts en la carpeta `DAI/scripts/` que se llaman [deploy_Azure](https://github.com/javiergarridomellado/DAI/blob/master/scripts/deploy_Azure.sh) y [deploy_VB](https://github.com/javiergarridomellado/DAI/blob/master/scripts/deploy_VB.sh) que se encargan de manera automatizada de crear una máquina virtual con la aplicación en Azure y VirtualBox respectivamente.Basta una única ejecución para ello.
 ## Instalación local de la aplicación
 
 Para ello basta con ejecutar los siguientes comandos:
@@ -163,7 +164,14 @@ De esta manera se despliega la aplicación en el PaaS Heroku (obviamente es inte
 
 ## Despliegue en un Iaas: Azure
 
-He usado Azure como IaaS. La aplicación se despliega automáticamente y queda en modo producción ejecutando el script [create_and_run](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIV/create_and_run.sh) gracias a Vagrant y Ansible. Se recomienda definir la variable de entorno ejecutando `export ANSIBLE_HOSTS=~/ruta/ansible_hosts`.
+He usado Azure como IaaS. La aplicación se despliega automáticamente y queda en modo producción ejecutando el script [deploy_Azure](https://github.com/javiergarridomellado/DAI/blob/master/scripts/deploy_Azure.sh) que se encuentra en la carpeta [DAI/scripts](https://github.com/javiergarridomellado/DAI/tree/master/scripts).Esto se realiza gracias a Vagrant y Ansible.
+```
+./deploy_Azure.sh
+```
+
+
+
+Otra posibilidad de desplegar la aplicación(recomiendo la anterior por estar más automatizada) es ejecutar el script [create_and_run](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIV/create_and_run.sh) aunque para ello es necesario tener en el mismo nivel los archivos [Vagrantfile](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIV/Vagrantfile), [ansible_hosts](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIV/ansible_hosts) e [iv.yml](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIV/iv.yml) que se encuentran en el siguiente [directorio](https://github.com/javiergarridomellado/DAI/tree/master/VagrantIV). Se recomienda definir la variable de entorno ejecutando `export ANSIBLE_HOSTS=~/ruta/ansible_hosts`.
 La url donde puede verse la aplicación es la siguiente [http://restaurantejaviergarrido.cloudapp.net/restaurante/](http://restaurantejaviergarrido.cloudapp.net/restaurante/).
 
 ```
@@ -177,7 +185,6 @@ Los servicios utilizados en modo producción son los siguientes:
 - [Gunicorn](http://gunicorn.org/) como servidor web (es el servidor de la aplicación y responde a las peticiones dinámicas).
 - [Supervisor](http://supervisord.org/) como **watchdog** (monitoriza y mantiene en continuo funcionamiento el servidor Gunicorn)
 
-**Nota: Para ejecutar el script es necesario tener en el mismo nivel los archivos [Vagrantfile](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIV/Vagrantfile), [ansible_hosts](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIV/ansible_hosts) e [iv.yml](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIV/iv.yml) que se encuentran en el siguiente [directorio](https://github.com/javiergarridomellado/DAI/tree/master/VagrantIV)**
 
 [Más información](https://github.com/javiergarridomellado/DAI/blob/master/documentacion/despliegueAzure.md)
 
@@ -185,11 +192,13 @@ Los servicios utilizados en modo producción son los siguientes:
 
 ### Despliegue en VirtualBox
 
-Debido a que no todo el mundo dispone de cuenta en Azure facilito la opción del despliegue local gracias a VirtualBox, para ello al igual que antes, se define la variable de entorno `export ANSIBLE_HOSTS=~/ruta/ansible_hosts` y ya solo basta con ejecutar el scrip [create_and_run](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIVLocal/create_and_run.sh).
+Debido a que no todo el mundo dispone de cuenta en Azure facilito la opción del despliegue local gracias a VirtualBox, para ello al igual que antes, se despliega automáticamente y queda en modo producción ejecutando un script, en este caso [deploy_VB](https://github.com/javiergarridomellado/DAI/blob/master/scripts/deploy_VB.sh) que se encuentra en la carpeta [DAI/scripts](https://github.com/javiergarridomellado/DAI/tree/master/scripts).Esto se realiza gracias a Vagrant y Ansible.
+```
+./deploy_VB.sh
+```
+Al igual que antes, otra posibilidad de desplegar la aplicación(recomiendo la anterior por estar más automatizada) es ejecutar el script [create_and_run](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIVLocal/create_and_run.sh) aunque para ello es necesario tener en el mismo nivel los archivos [Vagrantfile](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIVLocal/Vagrantfile), [ansible_hosts](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIVLocal/ansible_hosts) e [iv.yml](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIVLocal/iv.yml) que se encuentran en el siguiente [directorio](https://github.com/javiergarridomellado/DAI/tree/master/VagrantIVLocal). Se recomienda definir la variable de entorno ejecutando `export ANSIBLE_HOSTS=~/ruta/ansible_hosts`.
 
-```
-./create_and_run.sh
-```
+
 Los servicios utilizados en modo producción son los siguientes:
 
 - [VirtualBox](https://www.virtualbox.org/) como software de virtualización local.
@@ -198,7 +207,6 @@ Los servicios utilizados en modo producción son los siguientes:
 - [Gunicorn](http://gunicorn.org/) como servidor web (es el servidor de la aplicación y responde a las peticiones dinámicas).
 - [Supervisor](http://supervisord.org/) como **watchdog** (monitoriza y mantiene en continuo funcionamiento el servidor Gunicorn)
 
-**Nota: Para ejecutar el script es necesario tener en el mismo nivel los archivos [Vagrantfile](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIVLocal/Vagrantfile), [ansible_hosts](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIVLocal/ansible_hosts) e [iv.yml](https://github.com/javiergarridomellado/DAI/blob/master/VagrantIVLocal/iv.yml) que se encuentran en el siguiente [directorio](https://github.com/javiergarridomellado/DAI/tree/master/VagrantIVLocal)**
 
 [Más información](https://github.com/javiergarridomellado/DAI/blob/master/documentacion/despliegueVB.md)
 
