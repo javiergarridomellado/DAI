@@ -87,10 +87,21 @@ TEMPLATE_DIRS = (
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'vagrant',
+        'USER': 'root',
+        'PASSWORD':'',
+        'HOST': '',
+        'PORT': '',
     }
 }
+
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#    }
+#}
 ON_HEROKU = os.environ.get('PORT')
 if ON_HEROKU:
 	DATABASE_URL='postgres://kytzveedsclzaf:eIJAAuElYvSxPK-vmSdXG9Hjv8@ec2-107-21-219-235.compute-1.amazonaws.com:5432/df9sfr7a9b8vjf'
