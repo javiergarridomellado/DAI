@@ -260,7 +260,7 @@ $ ./docker_install_and_run.sh
 ```
 ### Borrar una Box de Vagrant
 ```
-vagrant box remove <nombre_box>
+$ vagrant box remove <nombre_box>
 ```
 
 ## Referencias
