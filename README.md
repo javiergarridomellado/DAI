@@ -61,7 +61,7 @@ Para las pruebas he usado el sistema de testeo de Django. Basta con ejecutar el 
 
 Puede verse los correspondientes [tests](https://github.com/javiergarridomellado/DAI/blob/master/restaurante/tests.py) que se realizan.Se usan tanto para **travis** como para **snap-ci**.
 
-![tests](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/travis2_zps4lshtctt.png)
+![tests](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/travis_zpswjlfffg8.png)
 
 ##Integración continua
 
