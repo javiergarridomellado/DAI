@@ -1,6 +1,6 @@
 """
 Probando despliegue heroku
-Cambios pr
+Cambios 
 Django settings for ProyectoDAI project.
 
 For more information on this file, see
