@@ -20,5 +20,6 @@ static3==0.6.1
 wheel==0.26.0
 whitenoise==2.0.4
 MySQL-python==1.2.3
+libmysqlclient-dev===5.5.35
 
 
