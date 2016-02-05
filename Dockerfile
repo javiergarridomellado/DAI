@@ -5,7 +5,11 @@ MAINTAINER Francisco Javier Garrido Mellado <franciscojaviergarridomellado@gmail
 
 #Actualización del Sistema 
 RUN sudo apt-get -y update
-
+#Instalar MySQL
+RUN sudo apt-get -y install python-mysqldb
+RUN sudo apt-get -y install mysql-server
+RUN sudo service mysql start
+RUN mysqladmin  -h localhost -u root  create vagrant
 #Descarga de la aplicación
 RUN sudo apt-get install -y git
 RUN sudo git clone https://github.com/javiergarridomellado/DAI.git
