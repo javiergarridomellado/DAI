@@ -1,6 +1,6 @@
 """
 Probando despliegue heroku
-Cambios 
+Cambios pr
 Django settings for ProyectoDAI project.
 
 For more information on this file, see
@@ -96,18 +96,18 @@ if ON_HEROKU:
 	DATABASE_URL='postgres://kytzveedsclzaf:eIJAAuElYvSxPK-vmSdXG9Hjv8@ec2-107-21-219-235.compute-1.amazonaws.com:5432/df9sfr7a9b8vjf'
 	DATABASES = {'default': dj_database_url.config(default=DATABASE_URL)}
 
-ON_AZURE = os.environ.get('HTTP_HOST')
-if ON_AZURE=='http://restaurantejaviergarrido.cloudapp.net':
-	DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'vagrant',
-        'USER': 'root',
-        'PASSWORD':'',
-        'HOST': '',
-        'PORT': '',
-    }
-}
+#ON_AZURE = os.environ.get('AZURE')
+#if ON_AZURE:
+#	DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.mysql',
+#        'NAME': 'vagrant',
+#        'USER': 'root',
+#        'PASSWORD':'',
+#        'HOST': '',
+#        'PORT': '',
+#    }
+#}
 STATIC_ROOT = 'staticfiles'
 
 # Internationalization
