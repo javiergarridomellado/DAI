@@ -154,9 +154,6 @@ Por último, se ejecuta el "playbook" de Ansible que se llama [iv.yml](https://g
     command: sudo mv DAI/scripts/webconfiguration/default /etc/nginx/sites-available/
   - name: crear bd
     command: mysqladmin  -h localhost -u root  create vagrant
-  - name: app configuracion produccion 
-    command: sudo mv DAI/ProyectoDAI/settings.py DAI/ProyectoDAI/bak_settings.py
-    command: sudo mv DAI/ProyectoDAI/bak2_settings.py DAI/ProyectoDAI/settings.py
   - name: sincro bd
     command: sudo python DAI/manage.py syncdb --noinput
   - name: update bd
@@ -173,10 +170,7 @@ Por último, se ejecuta el "playbook" de Ansible que se llama [iv.yml](https://g
       name: nginx 
       state: restarted
       enabled: true
-    #command: sudo service nginx restart
-    #command: sudo service supervisor restart
-  #- name: ejecutar
-    #command: nohup sudo python DAI/manage.py runserver 0.0.0.0:80
+
 
 ```
 
