@@ -15,7 +15,7 @@ Autor: Francisco Javier Garrido Mellado
 
 ## Introducción Proyecto Restaurante 
 
-Se trata de  una aplicación de Bares (tambien restaurantes) y Tapas donde los usuarios se registran e introducen su bar con sus correspondientes tapas, además se les permite votar (solo es necesario estar registrados) las tapas que más le ha gustado. La página muestra una gráfica de los Bares más exitosos así como un mapa de Google para que el usuario pueda visitarlo fisicamente.
+Se trata de  una aplicación de Bares (también restaurantes) y Tapas donde los usuarios se registran e introducen su bar con sus correspondientes tapas, además se les permite votar (solo es necesario estar registrados) las tapas que más le ha gustado. La página muestra una gráfica de los Bares más exitosos así como un mapa de Google para que el usuario pueda visitarlo fisicamente.
 
 Este proyecto se ha llevado a cabo conjuntamente con la asignatura de Diseño de Aplicaciones para Internet (DAI).
 
