@@ -4,8 +4,8 @@
   vars:
     mysql_root_password: 
   tasks:
-  #- name: Actualizar sistema 
-    #apt: update_cache=yes upgrade=dist 
+  - name: Actualizar sistema 
+    apt: update_cache=yes upgrade=dist 
   - name: Install MySQL
     apt: name={{ item }} update_cache=yes cache_valid_time=3600 state=present
     sudo: yes
