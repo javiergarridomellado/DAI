@@ -29,10 +29,15 @@ Respecto a la seguridad se garantiza que los datos y credenciales de los usuario
 
 Se ha creado en la nube la infraestructura necesaria para la aplicación, habiendo sido necesario el provisionamiento y la instalación de diferentes librerías para su correcto funcionamiento.
 
-Resumen:
--	1.Aplicación web donde interaccionan varios usuarios.
--	2.Servidores web.
--	3.Base de datos.
+Infraestructura:
+-	Aplicación web desarrollada con Django (Framework de alto nivel).
+-	Gunicorn y Nginx como servidores web en Azure.
+-   Supervisor como herramienta de monitorización en Azure.
+-	MySQL y PostgrSQL como Base de datos para Azure y Heroku respectivamente.
+-   Heroku como PaaS.
+-	Azure como IaaS.
+-	Docker como entorno seguro de desarrollo.
+-	Travis y Snap-CI como herramientas de Integración continua.
 
 
 ##Herramienta de Construcción
@@ -53,9 +58,9 @@ $ python manage.py createsuperuser
 $ python manage.py runserver
 ```
 
-##Desarrollo basado en pruebas
+##Sistema de Tests
 
-Para las pruebas he usado el sistema de testeo de Django. Basta con ejecutar el siguiente comando:
+Para las pruebas he usado el sistema de testeo de Django, este se basa en la clase [TestCase](https://docs.python.org/3/library/unittest.html#unittest.TestCase). Basta con ejecutar el siguiente comando:
 
 **python manage.py test** ó **python manage.py test nombreaplicacion**
 
