@@ -222,10 +222,6 @@ Los servicios utilizados en modo producción son los siguientes:
 - Ejecutar en el terminal **epydoc --html views.py models.py**
 
 
-## Cambios Realizados
-
-Se ha añade un [fichero](https://github.com/javiergarridomellado/DAI/blob/master/documentacion/cambios.md) donde se comentan los cambios más relevantes entre los diferentes hitos para facilitar la corrección de la práctica.
-
 ## Comandos Básicos
 
 ###Instalación de herramientas para el despliegue en Azure 
