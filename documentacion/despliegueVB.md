@@ -113,9 +113,6 @@ En el segundo bloque  se ejecuta el "playbook" de Ansible que se llama [iv.yml](
     command: sudo mv DAI/scripts/webconfiguration/default /etc/nginx/sites-available/
   - name: crear bd
     command: mysqladmin  -h localhost -u root  create vagrant
-  - name: app configuracion produccion 
-    command: sudo mv DAI/ProyectoDAI/settings.py DAI/ProyectoDAI/bak_settings.py
-    command: sudo mv DAI/ProyectoDAI/bak2_settings.py DAI/ProyectoDAI/settings.py
   - name: sincro bd
     command: sudo python DAI/manage.py syncdb --noinput
   - name: update bd
