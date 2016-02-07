@@ -33,7 +33,7 @@ Infraestructura:
 -	Aplicación web desarrollada con Django (Framework de alto nivel).
 -	Gunicorn y Nginx como servidores web en Azure.
 -   Supervisor como herramienta de monitorización en Azure.
--	MySQL y PostgrSQL como Base de datos para Azure y Heroku respectivamente.
+-	MySQL y PostgreSQL como Base de datos para Azure y Heroku respectivamente.
 -   Heroku como PaaS.
 -	Azure como IaaS.
 -	Docker como entorno seguro de desarrollo.
