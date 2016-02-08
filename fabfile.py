@@ -12,3 +12,7 @@ def install_run():
 #Ejecucion de la aplicacion en modo desarrollo
 def runApp():
 	run('cd DAI && sudo python manage.py runserver 0.0.0.0:80')
+
+#Actualizar la aplicacion
+def actApp():
+	run('cd DAI && sudo git pull')
