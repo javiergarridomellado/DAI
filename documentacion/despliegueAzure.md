@@ -210,6 +210,11 @@ El enlace a la aplicación es el siguiente [http://restaurantejaviergarrido.clou
 ![ssh](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/sshvagrantazure_zpscbxtkuca.png)
 
 
+En caso de volver al modo desarrollo, puede ejecutarse el archivo [fabfile](https://github.com/javiergarridomellado/DAI/blob/master/fabfile.py) para volver a lanzar la aplicación (con los servidores web Nginx y Gunicorn parados), para ello basta con ejecutar:
+```
+fab -p mipassword -H vagrant@restaurantejaviergarrido.cloudapp.net runApp
+```
+
 *Nota: Para su correcto funcionamiento es necesario tener instalado lo siguiente :*
 ```
 $ sudo apt-get install nodejs-legacy
