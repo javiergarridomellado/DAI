@@ -214,6 +214,10 @@ En caso de volver al modo desarrollo, puede ejecutarse el archivo [fabfile](http
 ```
 fab -p mipassword -H vagrant@restaurantejaviergarrido.cloudapp.net runApp
 ```
+Si el repositorio de GitHub se actualiza esto puede hacerse efectivo en la aplicación que está en funcionamiento mediante el comando:
+```
+fab -p mipassword -H vagrant@restaurantejaviergarrido.cloudapp.net actApp
+```
 
 *Nota: Para su correcto funcionamiento es necesario tener instalado lo siguiente :*
 ```
