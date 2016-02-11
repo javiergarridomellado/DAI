@@ -191,6 +191,11 @@ Los servicios utilizados en modo producción son los siguientes:
 - [Supervisor](http://supervisord.org/) como **watchdog** (monitoriza y mantiene en continuo funcionamiento el servidor Gunicorn)
 
 
+Se añade archivo [fabfile](https://github.com/javiergarridomellado/DAI/blob/master/fabfile.py) para automatizar y sistematizar el despliegue.Un ejemplo de utilización es el siguiente:
+```
+fab -p **** -H vagrant@restaurantejaviergarrido.cloudapp.net startServer
+```
+
 [Más información](https://github.com/javiergarridomellado/DAI/blob/master/documentacion/despliegueAzure.md)
 
 ![appdespl](http://i1045.photobucket.com/albums/b457/Francisco_Javier_G_M/appdespleazure_zps0wzccsgy.png)
