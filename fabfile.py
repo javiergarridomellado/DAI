@@ -35,7 +35,7 @@ def actRequirements():
 
 #Borrar App
 def removeApp():
-	run('sudo rm -f DAI')
+	run('sudo rm -rf DAI')
 
 #Clonar App
 def CloneApp():
